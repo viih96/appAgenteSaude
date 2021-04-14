@@ -1,9 +1,9 @@
 export class Medicament {
   paciente: string;
-  sus: number;
+  atendimento: string;
   remedio: string;
   tipo: string;
-  dosagem: number; //em ml
-  horario: number; //a cada x horas
+  dosagem: string; //em ml
+  horario: string; //a cada x horas
   observacao: string;
 }

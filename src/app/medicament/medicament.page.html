@@ -17,16 +17,14 @@
       <!-- Linha 1 -->
         <ion-col size="6">
           <ion-item>
-            <ion-label position="fixed">Paciente</ion-label>
-            <ion-input disabled="true"></ion-input>
-            <!-- <span>{{ paciente.name }}</span> -->
+            <ion-label position="floating">Paciente</ion-label>
+            <ion-input type="text" name="paciente" disabled="true" [(ngModel)]="medicament.paciente"></ion-input>
           </ion-item>
         </ion-col>
         <ion-col size="6">
           <ion-item>
-            <ion-label position="fixed">SUS</ion-label>
-            <ion-input disabled="true"></ion-input>
-            <!-- <span>{{ paciente.sus }}</span> -->
+            <ion-label position="floating">Atendimento</ion-label>
+            <ion-input type="number" name="atendimento" disabled="true" [(ngModel)]="medicament.atendimento"></ion-input>
           </ion-item>
         </ion-col>
       </ion-row>
@@ -49,12 +47,12 @@
       <ion-item>
         <ion-label>Tipo</ion-label>
         <ion-select placeholder="Escolha" type="text" name="tipo" [(ngModel)]="medicament.tipo">
-          <ion-select-option value="co">Comprimido</ion-select-option>
-          <ion-select-option value="ca">Cápsula</ion-select-option>
-          <ion-select-option value="in">Injetável</ion-select-option>
-          <ion-select-option value="li">Líquido</ion-select-option>
-          <ion-select-option value="po">Pomada</ion-select-option>
-          <ion-select-option value="go">Gota</ion-select-option>
+          <ion-select-option value="Comprimido">Comprimido</ion-select-option>
+          <ion-select-option value="Cápsula">Cápsula</ion-select-option>
+          <ion-select-option value="Injetável">Injetável</ion-select-option>
+          <ion-select-option value="Líquido">Líquido</ion-select-option>
+          <ion-select-option value="Pomada">Pomada</ion-select-option>
+          <ion-select-option value="Pomada">Pomada</ion-select-option>
         </ion-select>
       </ion-item>
     </ion-col>

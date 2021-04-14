@@ -24,11 +24,11 @@ export class MedicamentPage implements OnInit {
   ngOnInit() {
     this.medicament = new Medicament();
     this.medicament.paciente = "";
-    this.medicament.sus = 0;
+    this.medicament.atendimento = "";
     this.medicament.remedio = "";
     this.medicament.tipo = "";
-    this.medicament.dosagem = 0;
-    this.medicament.horario = 0;
+    this.medicament.dosagem = "";
+    this.medicament.horario = "";
     this.medicament.observacao = "";
 
     this.medicamentId =  this.activatedRoute.snapshot.params['id'];
@@ -37,9 +37,9 @@ export class MedicamentPage implements OnInit {
     if(this.medicamentId){
       const subscribe = this.medicamentService.getById(this.medicamentId).subscribe( (data: any) =>{
        subscribe.unsubscribe();
-       const { paciente, sus, remedio, tipo, dosagem, horario, observacao } = data;
+       const { paciente, atendimento, remedio, tipo, dosagem, horario, observacao } = data;
        this.medicament.paciente = paciente;
-       this.medicament.sus = sus;
+       this.medicament.atendimento = atendimento;
        this.medicament.remedio = remedio;
        this.medicament.tipo = tipo;
        this.medicament.dosagem = dosagem;
