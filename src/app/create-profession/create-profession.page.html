@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar color="dark-green">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Cadastrar</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="form">
+    <ion-item>
+      <ion-label position="floating">Profissao</ion-label>
+      <ion-input type="text" formControlName="profession"></ion-input>
+    </ion-item>
+    <div class="form-button">
+      <ion-button expand="block" fill="outline" color="dark-green">Enviar</ion-button>
+    </div>
+  </form>
+  <!-- Validation  -->
+  <ion-item *ngIf="form.controls.profession.invalid && (form.controls.profession.dirty || form.controls.profession.touched)" color="danger">
+    <div *ngIf="form.controls.profession.errors.required">Texto obrigatorio.</div>
+  </ion-item>
+</ion-content>
