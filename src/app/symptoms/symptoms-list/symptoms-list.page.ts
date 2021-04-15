@@ -43,3 +43,5 @@ export class SymptomsListPage implements OnInit {
   }
 
 }
+
+
