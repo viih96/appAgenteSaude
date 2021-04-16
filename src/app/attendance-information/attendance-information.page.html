@@ -1,0 +1,93 @@
+<ion-header>
+  <!-- Titulo da Pagina -->
+  <ion-toolbar color="medium">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>INFORMAÇÕES</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+ <!-- Formulário de Medicamento -->
+
+ <ion-list>
+
+  <ion-item *ngFor="let attendance of attendanceList">
+    <ion-grid>
+
+      <ion-row>
+        <ion-col size="12">
+          <ion-item>
+            <ion-label class="texto" position="stacked">Paciente</ion-label>
+            <ion-input disabled="true">{{ attendance.paciente }}</ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="12">
+          <ion-item>
+            <ion-label class="texto" position="stacked">SUS</ion-label>
+            <ion-input disabled="true">{{ attendance.sus }}</ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="12">
+          <ion-item>
+            <ion-label class="texto" position="stacked">Idade</ion-label>
+            <ion-input disabled="true">{{ attendance.idade }}</ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="12">
+          <ion-item>
+            <ion-label class="texto" position="stacked">Sexo</ion-label>
+            <ion-input disabled="true">{{ attendance.sexo }}</ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="12">
+          <ion-item>
+            <ion-label class="texto" position="stacked">Sangue</ion-label>
+            <ion-input disabled="true">{{ attendance.sangue }}</ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="12">
+          <ion-item>
+            <ion-label class="texto" position="stacked">Sintoma</ion-label>
+            <ion-input disabled="true">{{ attendance.sintoma }}</ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="12">
+          <ion-item>
+            <ion-label class="texto" position="stacked">Dor</ion-label>
+            <ion-input disabled="true">{{ attendance.dor }}</ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="12">
+          <ion-button expand="block" [routerLink]="['/medicament']" color="warning">Medicar</ion-button>
+        </ion-col>
+      </ion-row>
+
+     </ion-grid>
+  </ion-item>
+
+</ion-list>
+
+</ion-content>

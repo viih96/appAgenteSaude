@@ -11,7 +11,6 @@ export class AppComponent {
     { title: 'Usuários', url: 'users', icon: 'people' },
     { title: 'Sintomas', url: 'symptoms-list', icon: 'bandage' },
     { title: 'Atendimento', url: 'attendance', icon: 'chatbubbles' },
-    { title: 'Medicamento', url: 'medicament', icon: 'bag-add' },
     // { title: 'Favorites', url: '/folder/Favorites', icon: 'heart' },
     // { title: 'Archived', url: '/folder/Archived', icon: 'archive' },
     // { title: 'Trash', url: '/folder/Trash', icon: 'trash' },
