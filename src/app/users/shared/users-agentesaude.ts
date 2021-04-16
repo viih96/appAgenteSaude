@@ -1,9 +1,12 @@
 export class UsersAgentesaude {
-  tipousuario?: string;
-  name?: string;
-  registro?: string;
-  estado?: string;
-  tipo?: string; /** medico, enfermeiro, tec enfermagem, etc...  */
   email?: string;
   password?: string;
+  professional?: string; /** medico, enfermeiro, tec enfermagem, etc...  */
+  id_professional?: string;
+  name?: string;
+  registro?: string;
+  address_state?: string = "";
+  sexo?: string;
+  contato?: string;
+  tipousuario?: string = "agentesaude";
 }
