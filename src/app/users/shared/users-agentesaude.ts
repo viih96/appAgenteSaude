@@ -7,8 +7,6 @@ export class UsersAgentesaude {
   registro?: string;
   address_state?: string = "";
   sexo?: string;
-  celular?: string;
-  // tipousuario?: string;
-
-
+  contato?: string;
+  tipousuario?: string = "agentesaude";
 }

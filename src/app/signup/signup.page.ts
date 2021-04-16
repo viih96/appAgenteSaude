@@ -5,6 +5,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { ToastService } from '../shared/toast.service';
 import { Router } from '@angular/router';
 import { UsersAgentesaude } from '../users/shared/users-agentesaude';
+import { ValidaCpfService } from '../shared/valida-cpf.service';
 
 @Component({
   selector: 'app-signup',
@@ -13,7 +14,7 @@ import { UsersAgentesaude } from '../users/shared/users-agentesaude';
 })
 export class SignupPage implements OnInit {
   usersAgentesaude: UsersAgentesaude;
-  tipousuario: string;
+  tipousuario: string="agentesaude";
   email: string;
   password: string;
   user: string;
@@ -25,7 +26,7 @@ export class SignupPage implements OnInit {
     private professionalService: ProfessionalService,
     private afa: AngularFireAuth,
     // private cepService: CepService,
-    // private validaCPFService: ValidaCpfService,
+    private validaCPFService: ValidaCpfService,
     private toast: ToastService,
     private router: Router) { }
 
@@ -55,7 +56,7 @@ export class SignupPage implements OnInit {
   async registerAgentesaude(){
     this.usersAgentesaude.email = this.email;
     this.usersAgentesaude.password = this.password;
-    // this.usersAgentesaude.tipousuario = this.tipousuario;
+    this.usersAgentesaude.tipousuario = this.tipousuario;
     // this.getProfessional(this.usersAgentesaude.id_professional);
 
     try {
@@ -66,5 +67,12 @@ export class SignupPage implements OnInit {
       this.toast.showMessageTop(error,'danger');
     }
   }
+
+  validaCPF(){
+    if (this.validaCPFService.isValidCPF(this.password) == false) {
+      this.toast.showMessageTop('CPF Inválido','danger');
+    }
+  }
+
 
 }

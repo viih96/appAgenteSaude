@@ -37,20 +37,26 @@ export class AuthService {
   }
 
   registerAgentesaude(user: UsersAgentesaude, id: string){
-        const { name,
-          email,
+        const { email,
+          name,
+          professional,
+          id_professional,
           registro,
           address_state,
-          id_professional,
-          professional,   } = user;
+          contato,
+          sexo,
+        tipousuario, } = user;
     this.afs.collection('users').doc(id).set(
       {
-        name: name,
         email: email,
+        name: name,
+        professional: professional,
+        id_professional: id_professional,
         registro: registro,
         address_state: address_state,
-        id_professional: id_professional,
-        professional: professional,
+        contato: contato,
+        sexo: sexo,
+        tipousuario: tipousuario
       }
     )
   }
