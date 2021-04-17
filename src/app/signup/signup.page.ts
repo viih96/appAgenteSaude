@@ -61,6 +61,11 @@ export class SignupPage implements OnInit {
 
     try {
       await this.auth.registerAgente(this.usersAgentesaude);
+      await this.auth.addProfileId(this.usersAgentesaude);
+      // this.afa.authState.subscribe( usuario => {
+      //   this.auth.registerAgentesaude(this.usersAgentesaude, usuario.uid);
+      // })
+      //this.auth.logout();
       this.toast.showMessageBottom('Usuário registrado com sucesso !!!', 'secondary');
       this.router.navigate(['login']);
     } catch (error) {

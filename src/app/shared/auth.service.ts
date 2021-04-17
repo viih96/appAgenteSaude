@@ -9,7 +9,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
   providedIn: 'root'
 })
 export class AuthService {
-
+  userUID: string;
   constructor(
     private afa: AngularFireAuth,
     private afs: AngularFirestore,
@@ -27,13 +27,19 @@ export class AuthService {
 
   registerAgente(user: UsersAgentesaude){
     this.afa.createUserWithEmailAndPassword(user.email, user.password);
+  }
 
+
+  addProfileId(user: UsersAgentesaude){
     this.afa.onAuthStateChanged((userProfile)=>{
+      this.userUID = userProfile.uid;
+      this.registerAgentesaude(user, userProfile.uid);
       userProfile.updateProfile({displayName: user.name, photoURL: ''});
-      if(userProfile){
-        this.registerAgentesaude(user, userProfile.uid);
-      }
+      // if(userProfile){
+      //this.logout();
+      // }
     })
+
   }
 
   registerAgentesaude(user: UsersAgentesaude, id: string){
@@ -45,7 +51,7 @@ export class AuthService {
           address_state,
           contato,
           sexo,
-        tipousuario, } = user;
+          tipousuario, } = user;
     this.afs.collection('users').doc(id).set(
       {
         email: email,
