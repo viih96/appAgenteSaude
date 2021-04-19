@@ -1,5 +1,4 @@
 export class UsersAgentesaude {
-  tipousuario?: string;
   name?: string;
   email?: string;
   password?: string;

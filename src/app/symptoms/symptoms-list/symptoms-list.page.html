@@ -9,49 +9,43 @@
 
 <ion-content color="medium">
 
+  <ion-list>
+    <ion-item *ngFor="let symptom of symptoms | async">
+      <ion-grid> <!--grid -->
+        <ion-row>
+          <ion-col> <!--1-->
+            <ion-avatar class="ion-align-self-start" *ngIf="symptom.imgUrl">
+              <img [src]="symptom.imgUrl" alt=""/>
+            </ion-avatar>
+          </ion-col>
+          <ion-col> <!--2-->
+            <span>{{ symptom.name}}</span>
+          </ion-col>
+          <ion-col> <!--3-->
+            <ion-button color="warning" [routerLink]="['/symptoms-form/edit', symptom.id]">
+              <ion-icon name="create-outline"></ion-icon>
+            </ion-button>
+          </ion-col>
+          <ion-col> <!--4-->
+            <ion-button color="danger" (click)="removeSymptom(symptom)">
+              <ion-icon name="trash"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="3"> <!--1-->
+            <!-- <span [innerHTML]="symptom.description"></span> -->
+          </ion-col>
+        </ion-row>
+      </ion-grid> <!--/grid -->
+    </ion-item>
+  </ion-list>
 
-    <ion-list>
-        <ion-item color="medium" *ngFor="let symptom of symptoms | async">
-
-
-            <ion-grid color="">
-                <!--grid -->
-                <ion-row class="">
-                    <ion-col>
-                        <!--1-->
-                        <ion-avatar class="ion-align-self-start" *ngIf="symptom.imgUrl">
-                            <img [src]="symptom.imgUrl" alt="" />
-                        </ion-avatar>
-                    </ion-col>
-                    <ion-col class="name">
-                        <!--2-->
-                        <span>{{ symptom.name}}</span>
-                    </ion-col>
-                    <ion-col>
-                        <!--3-->
-                        <ion-button class="action_buttons" color="light" [routerLink]="['/symptoms-form/edit', symptom.id]">
-                            <ion-icon name="create-outline"></ion-icon>
-                        </ion-button>
-                    </ion-col>
-                    <ion-col>
-                        <!--4-->
-                        <ion-button class="action_buttons" color="danger" (click)="removeSymptom(symptom)">
-                            <ion-icon name="trash"></ion-icon>
-                        </ion-button>
-                    </ion-col>
-                </ion-row>
-
-            </ion-grid>
-
-            <!--/grid -->
-        </ion-item>
-    </ion-list>
-
-    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-        <ion-fab-button [routerLink]="['/symptoms-form/new']" color="light">
-            <ion-icon name="add-circle-outline">Adicionar</ion-icon>
-        </ion-fab-button>
-    </ion-fab>
-
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button [routerLink]="['/symptoms-form/new']" color="dark-green">
+      <ion-icon name="add-circle-outline">Adicionar</ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 
 </ion-content>
+
