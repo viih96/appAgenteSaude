@@ -1,4 +1,6 @@
 export class UsersAgentesaude {
+  tipousuario?: string;
+  name?: string;
   email?: string;
   password?: string;
   professional?: string; /** medico, enfermeiro, tec enfermagem, etc...  */
