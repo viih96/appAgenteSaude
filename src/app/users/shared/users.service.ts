@@ -4,8 +4,6 @@ import { AngularFireStorage } from '@angular/fire/storage';
 import { map } from 'rxjs/operators';
 import { UsersAgentesaude } from './users-agentesaude';
 import { UsersPaciente } from './users-paciente';
-//import { Users } from './users';
-//import { UsersPaciente } from './users-paciente';
 
 @Injectable({
   providedIn: 'root'
@@ -19,9 +17,6 @@ export class UsersService {
       private storage: AngularFireStorage){
       this.usersagentesaudeCollection = this.afs.collection<UsersAgentesaude>('users');
       this.userspacienteCollection = this.afs.collection<UsersPaciente>('users');
-      
-
-
   }
 
 
@@ -52,11 +47,6 @@ export class UsersService {
           })
         )
       }
-
-
-
-
-
   }
 
  
