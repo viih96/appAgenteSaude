@@ -61,6 +61,7 @@ export class SignupPage implements OnInit {
 
     try {
       await this.auth.registerAgente(this.usersAgentesaude);
+      await this.auth.addProfileId(this.usersAgentesaude);
       this.toast.showMessageBottom('Usuário registrado com sucesso !!!', 'secondary');
       this.router.navigate(['login']);
     } catch (error) {

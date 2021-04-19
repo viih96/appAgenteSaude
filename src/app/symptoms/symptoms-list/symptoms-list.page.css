@@ -1,0 +1,12 @@
+ion-grid {
+  border: 0.3rem solid #0fff98;
+  margin-bottom: 0.5rem; }
+
+ion-title {
+  text-align: center; }
+
+.name {
+  margin-top: 1rem; }
+
+.action_buttons {
+  margin-top: 0.8rem; }

@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar color="primary">
+  <ion-toolbar color="dark-green">
     <ion-title>{{title}}</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -7,31 +7,31 @@
 <!-- Template-driven [()] ngModel -->
 <ion-content>
 
-  <form (ngSubmit)="onSubmit()">
-    <ion-item class="ion-margin-top" lines="none">
-      <ion-label position="stacked">Sintoma</ion-label>
-      <ion-input name="name" type="text" placeholder="Nome do Sintoma"  [(ngModel)]="symptoms.name"></ion-input>
-    </ion-item>
+    <form (ngSubmit)="onSubmit()">
+        <ion-item class="ion-margin-top" lines="none">
+            <ion-label position="stacked">Sintoma</ion-label>
+            <ion-input name="name" type="text" placeholder="Nome do Sintoma" [(ngModel)]="symptoms.name"></ion-input>
+        </ion-item>
 
-    <ion-item class="ion-margin-top" lines="none">
-      <ion-label position="stacked">Descrição</ion-label>
-      <ion-input name="description" type="text" placeholder="Descrição do Sintoma" [(ngModel)]="symptoms.description"></ion-input>
-    </ion-item>
+        <ion-item class="ion-margin-top" lines="none">
+            <ion-label position="stacked">Descrição</ion-label>
+            <ion-input name="description" type="text" placeholder="Descrição do Sintoma" [(ngModel)]="symptoms.description"></ion-input>
+        </ion-item>
 
-    <ion-item *ngIf="imgUrl==''">
-      <ion-label class="form-control-label">Imagem</ion-label>
-      <ion-input type="file" accept="image/png,image/jpeg" (change)="upload($event)"></ion-input>
-    </ion-item>
+        <ion-item *ngIf="imgUrl==''">
+            <ion-label class="form-control-label">Imagem</ion-label>
+            <ion-input type="file" accept="image/png,image/jpeg" (change)="upload($event)"></ion-input>
+        </ion-item>
 
-    <ion-item class="form-group" [hidden]="!hasImg">
-      <img src="{{ imgUrl }}" class="img-thumbnail d-block" style="max-width: 100px;" [hidden]="!hasImg" />
-      <ion-button expand="block" color="danger" (click)="removerImg(symptomsId, filePath)" [hidden]="!hasImg" >
-        <ion-icon slot="start" name="trash"></ion-icon> Remover esta Imagem
-      </ion-button>
-    </ion-item>
+        <ion-item class="form-group" [hidden]="!hasImg">
+            <img src="{{ imgUrl }}" class="img-thumbnail d-block" style="max-width: 100px;" [hidden]="!hasImg" />
+            <ion-button expand="block" color="danger" (click)="removerImg(symptomsId, filePath)" [hidden]="!hasImg">
+                <ion-icon slot="start" name="trash"></ion-icon> Remover esta Imagem
+            </ion-button>
+        </ion-item>
 
-    <ion-button id="salvar" expand="block" type="submit" color="primary">Salvar</ion-button>
-    <ion-button expand="block" [routerLink]="['/symptoms-list']" color="secondary">Cancelar</ion-button>
+    <ion-button id="salvar" expand="block" type="submit" color="dark-green">Salvar</ion-button>
+    <ion-button expand="block" [routerLink]="['/symptoms-list']" color="warning">Cancelar</ion-button>
 
-  </form>
+    </form>
 </ion-content>
