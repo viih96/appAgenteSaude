@@ -33,14 +33,15 @@ export class AuthGuard implements CanActivate {
           this.toast.showMessageTop('Usuário não logado!!!', 'warning');
         }
         else {
-          //
           this.afa.authState.subscribe(user =>{
+            if (user.uid) {
             this.userService.getById(user.uid).subscribe( (data: any) =>{
               if (data.tipousuario =='paciente'){
                 this.router.navigate(['/login']);
                 this.toast.showMessageTop('Usuário Paciente sem permissão!!!', 'danger');
               }
             })
+          }
           })
         }
 
