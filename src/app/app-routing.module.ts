@@ -36,13 +36,26 @@ const routes: Routes = [
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },
   {
+    path: 'create-profession',
+    loadChildren: () => import('./create-profession/create-profession.module').then( m => m.CreateProfessionPageModule)
+  },
+  {
+    path: 'updaet-user',
+    loadChildren: () => import('./updaet-user/updaet-user.module').then( m => m.UpdaetUserPageModule)
+  },
+  {
+    path: 'signup',
+    loadChildren: () => import('./signup/signup.module').then( m => m.SignupPageModule)
+  },
+  {
     path: 'medicament',
     loadChildren: () => import('./medicament/medicament.module').then( m => m.MedicamentPageModule)
   },
   {
     path: 'attendance',
     loadChildren: () => import('./attendance/attendance.module').then( m => m.AttendancePageModule)
-  },  {
+  },
+  {
     path: 'attendance-information',
     loadChildren: () => import('./attendance-information/attendance-information.module').then( m => m.AttendanceInformationPageModule)
   }
@@ -58,3 +71,5 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule {}
+
+

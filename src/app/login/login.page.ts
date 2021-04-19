@@ -21,7 +21,7 @@ export class LoginPage implements OnInit {
   }
 
   async signIn(){
-
+    //this.auth.logout();
     try {
       await this.auth.login(this.login);
       this.toast.showMessageBottom('Usuário logado!!', 'dark-green');
