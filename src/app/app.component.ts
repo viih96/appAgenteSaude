@@ -11,7 +11,7 @@ export class AppComponent {
     { title: 'Usuários', url: 'users', icon: 'people' },
     { title: 'Sintomas', url: 'symptoms-list', icon: 'bandage' },
     { title: 'Atendimento', url: 'attendance', icon: 'chatbubbles' },
-    { title: '+Profissoes', url: 'create-profession', icon: 'heart' },
+    { title: '+Profissoes', url: 'profession-list', icon: 'heart' },
     { title: 'Editar Usuario', url: 'updaet-user', icon: 'archive' },
     // { title: 'Trash', url: '/folder/Trash', icon: 'trash' },
     // { title: 'Spam', url: '/folder/Spam', icon: 'warning' },

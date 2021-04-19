@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar color="dark-green">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Profissoes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item *ngFor="let p of prof | async">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="6">
+          <ion-label>
+            Profissao:
+          </ion-label>
+          <span>{{ p.description }}</span>
+        </ion-col>
+        <ion-col>
+          <ion-button color="warning">
+            <ion-icon name="create-outline"></ion-icon>
+          </ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button color="danger" (click)="remove(p)">
+            <ion-icon name="trash"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-item>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button [routerLink]="['/create-profession/']" color="dark-green">
+      <ion-icon name="add-circle-outline">Adicionar</ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
