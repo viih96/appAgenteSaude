@@ -41,7 +41,7 @@ const routes: Routes = [
   },
   {
     path: 'updaet-user',
-    loadChildren: () => import('./updaet-user/updaet-user.module').then( m => m.UpdaetUserPageModule)
+    loadChildren: () => import('./update-user/update-user.module').then( m => m.UpdateUserPageModule)
   },
   {
     path: 'signup',
