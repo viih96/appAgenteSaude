@@ -46,6 +46,18 @@ const routes: Routes = [
   {
     path: 'signup',
     loadChildren: () => import('./signup/signup.module').then( m => m.SignupPageModule)
+  },
+  {
+    path: 'medicament',
+    loadChildren: () => import('./medicament/medicament.module').then( m => m.MedicamentPageModule)
+  },
+  {
+    path: 'attendance',
+    loadChildren: () => import('./attendance/attendance.module').then( m => m.AttendancePageModule)
+  },
+  {
+    path: 'attendance-information',
+    loadChildren: () => import('./attendance-information/attendance-information.module').then( m => m.AttendanceInformationPageModule)
   }
 
 
@@ -59,3 +71,5 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule {}
+
+

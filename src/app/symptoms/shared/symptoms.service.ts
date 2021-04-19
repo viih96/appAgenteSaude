@@ -13,6 +13,7 @@ export class SymptomsService {
   constructor(private afs: AngularFirestore,
               private storage: AngularFireStorage){
       this.symptomsCollection = this.afs.collection<Symptoms>('symptoms');
+
   }
 
   getAll(){ // buscar todos
@@ -32,6 +33,7 @@ export class SymptomsService {
  getById(id: string){ // buscar por Id
     return this.symptomsCollection.doc<Symptoms>(id).valueChanges();
  }
+
 
  addSymptoms(symptoms: Symptoms, file: File){
     // 1 momento
