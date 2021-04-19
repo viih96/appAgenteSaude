@@ -75,7 +75,7 @@ export class SymptomsFormPage implements OnInit {
       try {
         await this.symptomsService.updateSymptoms(this.symptoms, this.symptomsId, this.file);
         // mensagem OK
-        this.toast.showMessageBottom('Sintoma alterado com sucesso!!!','success')
+        this.toast.showMessageBottom('Sintoma alterado com sucesso!!!','dark-green')
         this.router.navigate(['/symptoms-list']);
       } catch (error) {
         // mensagem error
@@ -88,7 +88,7 @@ export class SymptomsFormPage implements OnInit {
       try {
         await this.symptomsService.addSymptoms(this.symptoms, this.file);
         // mensagem OK
-        this.toast.showMessageBottom('Sintoma inserido com sucesso!!!','success')
+        this.toast.showMessageBottom('Sintoma inserido com sucesso!!!','dark-green')
         this.router.navigate(['/symptoms-list']);
       } catch (error) {
         // mensagem error

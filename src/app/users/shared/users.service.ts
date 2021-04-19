@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { map } from 'rxjs/operators';
-import { UsersPaciente } from './users-paciente';
+import { UsersAgentesaude } from './users-agentesaude';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsersService {
-  private usersCollection: AngularFirestoreCollection<UsersPaciente>;
+  private usersCollection: AngularFirestoreCollection<UsersAgentesaude>;
 
   constructor(private afs: AngularFirestore){
-      this.usersCollection = this.afs.collection<UsersPaciente>('users');
+      this.usersCollection = this.afs.collection<UsersAgentesaude>('users');
   }
 
    getUsers(tipousuario: string){ // buscar todos
@@ -21,7 +21,7 @@ export class UsersService {
           map( changes => {
             return changes.map( s => {
               const id = s.payload.doc.id;
-              const data = s.payload.doc.data() as UsersPaciente
+              const data = s.payload.doc.data() as UsersAgentesaude
               return { id, ...data };
             })
           })
@@ -36,7 +36,7 @@ export class UsersService {
         map( changes => {
           return changes.map( s => {
             const id = s.payload.doc.id;
-            const data = s.payload.doc.data() as UsersPaciente
+            const data = s.payload.doc.data() as UsersAgentesaude
             return { id, ...data };
           })
         })
@@ -44,7 +44,7 @@ export class UsersService {
  }
 
    getById(id: string){ // buscar por Id
-      return this.usersCollection.doc<UsersPaciente>(id).valueChanges();
+      return this.usersCollection.doc<UsersAgentesaude>(id).valueChanges();
    }
 
 }
