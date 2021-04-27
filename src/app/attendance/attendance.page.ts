@@ -1,6 +1,9 @@
+import { Symptoms } from './../symptoms/shared/symptoms';
+import { subAttend } from './../attendance/shared/subattend';
+import { AttendanceService } from './shared/attendance.service';
 import { Component, OnInit } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
-import { first } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+
 
 @Component({
   selector: 'app-attendance',
@@ -8,32 +11,26 @@ import { first } from 'rxjs/operators';
   styleUrls: ['./attendance.page.scss'],
 })
 export class AttendancePage implements OnInit {
-  public attendanceList: any;
+  attend: Observable<any[]>;
+  symptoms: Observable<any[]>;
 
-  constructor(private firestore: AngularFirestore) { }
-
-  async ngOnInit() {
-    this.attendanceList = await this.initializeItems();
+  constructor(
+    private attendanceService: AttendanceService
+  ) {
   }
 
-  async initializeItems(): Promise<any>{
-    const attendanceList = await this.firestore.collection('attendanceList').valueChanges().pipe(first()).toPromise();
-    return attendanceList;
+  ngOnInit() {
+    this.getAll();
+    this.getAllU();
   }
 
-  async filterList(evt) {
-    this.attendanceList = await this.initializeItems();
-    const searchTerm = evt.srcElement.value;
+  getAll(){
+    this.attend = this.attendanceService.getAll();
+   }
 
-    if (!searchTerm) {
-      return;
-    }
+   getAllU(){
+     this.symptoms = this.attendanceService.getAllU();
+   }
 
-    this.attendanceList = this.attendanceList.filter(currentAttendance => {
-      if (currentAttendance.sus && searchTerm) {
-        return (currentAttendance.sus.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1);
-      }
-    })
-  }
 
 }

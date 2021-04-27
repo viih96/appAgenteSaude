@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 
-import { IonicModule, IonicRouteStrategy, IonSearchbar } from '@ionic/angular';
+import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -13,6 +13,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 
 import { environment } from 'src/environments/environment';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [AppComponent],
@@ -26,7 +27,9 @@ import { environment } from 'src/environments/environment';
     AngularFirestoreModule,
     AngularFireStorageModule
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    DatePipe
+  ],
   bootstrap: [AppComponent],
 
 })

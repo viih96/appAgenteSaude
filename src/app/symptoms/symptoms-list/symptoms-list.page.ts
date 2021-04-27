@@ -16,16 +16,13 @@ symptoms: Observable<any[]>;
 
   ngOnInit() {
   this.getAll();
-  
-
 }
 
 
-  getAll(){  
+  getAll(){
    this.symptoms = this.symptomsService.getAll();
-    
   }
-  
+
 
   removeSymptom(symptom: any){
 
