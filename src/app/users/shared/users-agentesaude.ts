@@ -1,4 +1,5 @@
 export class UsersAgentesaude {
+  name?: string;
   email?: string;
   password?: string;
   professional?: string; /** medico, enfermeiro, tec enfermagem, etc...  */
@@ -9,6 +10,4 @@ export class UsersAgentesaude {
   sexo?: string;
   contato?: string;
   tipousuario?: string = "agentesaude";
-
-
 }

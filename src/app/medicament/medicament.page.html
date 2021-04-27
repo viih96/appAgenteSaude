@@ -1,0 +1,97 @@
+<ion-header>
+  <!-- Titulo da Pagina -->
+  <ion-toolbar color="medium">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>{{title}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+ <!-- Formulário de Medicamento -->
+ <form (ngSubmit)="onSubmit()">
+  <ion-grid>
+    <ion-row>
+      <!-- Paciente e SUS serão informções vindas do banco -->
+      <!-- Linha 1 -->
+        <ion-col size="6">
+          <ion-item>
+            <ion-label position="floating">Paciente</ion-label>
+            <ion-input type="text" name="paciente" disabled="true" [(ngModel)]="medicament.paciente"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="6">
+          <ion-item>
+            <ion-label position="floating">Atendimento</ion-label>
+            <ion-input type="number" name="atendimento" disabled="true" [(ngModel)]="medicament.atendimento"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+
+    <!-- As outras informações serão inseridas no banco -->
+    <!-- Linha 2 -->
+    <ion-row>
+      <ion-col size="12">
+        <ion-item>
+          <ion-label size="6" position="floating">Remédio</ion-label>
+          <ion-input type="text" name="remedio" [(ngModel)]="medicament.remedio"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+  <!-- Linha 3 -->
+  <ion-row>
+    <ion-col size="12">
+      <ion-item>
+        <ion-label>Tipo</ion-label>
+        <ion-select placeholder="Escolha" type="text" name="tipo" [(ngModel)]="medicament.tipo">
+          <ion-select-option value="Comprimido">Comprimido</ion-select-option>
+          <ion-select-option value="Cápsula">Cápsula</ion-select-option>
+          <ion-select-option value="Injetável">Injetável</ion-select-option>
+          <ion-select-option value="Líquido">Líquido</ion-select-option>
+          <ion-select-option value="Pomada">Pomada</ion-select-option>
+          <ion-select-option value="Pomada">Pomada</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+
+  <!-- Linha 4 -->
+  <ion-row>
+    <ion-col size="6">
+      <ion-item>
+        <ion-label position="floating">Dosagem</ion-label>
+        <ion-input type="number" name="dosagem" [(ngModel)]="medicament.dosagem"></ion-input>
+      </ion-item>
+    </ion-col>
+    <ion-col size="6">
+      <ion-item>
+       <ion-label position="floating">Horário</ion-label>
+       <ion-input type="number" name="horario" [(ngModel)]="medicament.horario"></ion-input>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+
+  <!-- Linha 5 -->
+  <ion-row>
+    <ion-col size="12">
+      <ion-item>
+        <ion-label position="floating">Observações</ion-label>
+        <ion-textarea type="text" name="observacao" [(ngModel)]="medicament.observacao"></ion-textarea>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+
+  <!-- Botões de inserir e o botão de cancelar, que volta para a tela de atendimento -->
+  <ion-row>
+    <ion-col size="12">
+      <ion-button expand="block" type="submit" color="medium">Salvar</ion-button>
+      <ion-button expand="block" [routerLink]="['/attendance']" color="warning">Voltar</ion-button>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+</form>
+</ion-content>
