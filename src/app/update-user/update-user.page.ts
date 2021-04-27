@@ -13,6 +13,11 @@ import { Router } from '@angular/router';
 export class UpdateUserPage implements OnInit {
   user: UpdateUser;
   userId: string;
+  // Dados da imagem
+  private file: File = null;
+  filePath: string = '';
+  imgUrl: string = '';
+  hasImg: boolean = false;
   constructor(private afa: AngularFireAuth,
               private updateU: UpdateUserService,
               private toast: ToastService,
@@ -30,7 +35,7 @@ export class UpdateUserPage implements OnInit {
   research(){
     const subscribe = this.updateU.getById(this.userId).subscribe( (data: any) =>{
       subscribe.unsubscribe();
-      const { email, name, cartaosus, address_state, sexo, contato, tipousuario } = data;
+      const { email, name, cartaosus, address_state, sexo, contato, tipousuario, filePath, imgUrl } = data;
       this.user.email = email;
       this.user.name = name;
       this.user.cartaosus = cartaosus;
@@ -38,12 +43,38 @@ export class UpdateUserPage implements OnInit {
       this.user.sexo = sexo;
       this.user.contato = contato;
       this.user.tipousuario = tipousuario;
+      if(filePath && imgUrl){
+        this.user.filePath =  filePath;
+        this.user.imgUrl = imgUrl;
+      }
+      this.hasImg = this.user.imgUrl == '' ? false : true;
     });
+  }
+
+  // Upload da imagem
+  upload(event: any){
+    if(event.target.files.length){
+      this.file = event.target.files[0];
+    } else {
+      this.file = null;
+    }
+  }
+  // Remover a imagem
+  async removerImg(id: string, filePath: string){
+    try {
+      await this.updateU.removerImg(id, filePath)
+      this.user.imgUrl = '';
+      this.user.filePath = '';
+      this.hasImg = false;
+    } catch (error) {
+      this.toast.showMessageTop(error,'danger');
+      console.log(error)
+    }
   }
   async onSubmit(){
     // update
     try {
-      await this.updateU.updateUser(this.user, this.userId);
+      await this.updateU.updateUser(this.user, this.userId, this.file);
       // mensagem OK
       this.toast.showMessageBottom('Usuario alterado com sucesso!!!','dark-green')
       this.router.navigate(['dashboard/']);

@@ -1,4 +1,4 @@
-export class UpdateUser {
+export class User {
   email?: string;
   name?: string;
   cartaosus?: string;

@@ -9,6 +9,20 @@
 
 <ion-content>
   <form (ngSubmit)="onSubmit()">
+    <ion-item *ngIf="user.imgUrl == ''">
+      <img *ngIf="user.imgUrl == ''"  src="/assets/images/fotousuariopadrao.png" alt="" class="img-thumbnail d-block" style="max-width: 100px;"/>
+      <ion-input *ngIf="user.imgUrl == ''" color="warning" type="file" accept="image/png,image/jpeg" (change)="upload($event)">
+        <!-- <ion-icon name="add-outline"></ion-icon> -->
+      </ion-input>
+    </ion-item>
+
+    <ion-item [hidden]="!hasImg">
+      <img src="{{user.imgUrl}}" alt="" class="img-thumbnail d-block" style="max-width: 100px;" [hidden]="!hasImg"/>
+      <ion-button color="danger"  (click)="removerImg(userId, filePath)" [hidden]="!hasImg">
+        <ion-icon name="trash"></ion-icon>
+      </ion-button>
+    </ion-item>
+
     <ion-item>
       <ion-label position="stacked">E-mail</ion-label>
       <ion-input name="email" type="email" [(ngModel)]="user.email"></ion-input>
@@ -21,7 +35,7 @@
 
     <ion-item>
       <ion-label position="stacked">Profissão</ion-label>
-      <ion-input name="profissional" type="text"  [(ngModel)]="user.professional"></ion-input>
+      <ion-input name="profissional" type="text"></ion-input>
     </ion-item>
 
     <ion-item>

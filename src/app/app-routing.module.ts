@@ -58,7 +58,8 @@ const routes: Routes = [
   {
     path: 'attendance-information',
     loadChildren: () => import('./attendance-information/attendance-information.module').then( m => m.AttendanceInformationPageModule)
-  },  {
+  },
+  {
     path: 'profession-list',
     loadChildren: () => import('./profession-list/profession-list.module').then( m => m.ProfessionListPageModule)
   }
