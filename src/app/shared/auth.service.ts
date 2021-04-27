@@ -39,6 +39,7 @@ export class AuthService {
       //this.logout();
       // }
     })
+
   }
 
   registerAgentesaude(user: UsersAgentesaude, id: string){

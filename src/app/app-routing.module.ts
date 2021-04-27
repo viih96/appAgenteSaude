@@ -59,9 +59,6 @@ const routes: Routes = [
     path: 'attendance-information',
     loadChildren: () => import('./attendance-information/attendance-information.module').then( m => m.AttendanceInformationPageModule)
   }
-
-
-
 ];
 
 @NgModule({
