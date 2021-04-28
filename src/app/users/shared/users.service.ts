@@ -9,6 +9,7 @@ import { UsersPaciente } from './users-paciente';
   providedIn: 'root'
 })
 export class UsersService {
+  private usersCollection: AngularFirestoreCollection<UsersAgentesaude>;
   private usersagentesaudeCollection: AngularFirestoreCollection<UsersAgentesaude>;
   private userspacienteCollection: AngularFirestoreCollection<UsersPaciente>;
 

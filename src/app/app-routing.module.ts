@@ -64,9 +64,6 @@ const routes: Routes = [
     loadChildren: () => import('./profession-list/profession-list.module').then( m => m.ProfessionListPageModule)
   }
 
-
-
-
 ];
 
 @NgModule({
