@@ -8,17 +8,19 @@
 </ion-header>
 
 <ion-content>
-  <form [formGroup]="form">
+  <form (ngSubmit)="onSubmit()">
     <ion-item>
       <ion-label position="floating">Profissao</ion-label>
-      <ion-input type="text" formControlName="profession"></ion-input>
+      <ion-input type="text" name="professsion" #profession="ngModel" [(ngModel)]="p.professsion" required></ion-input>
     </ion-item>
     <div class="form-button">
-      <ion-button expand="block" color="dark-green">Enviar</ion-button>
+      <ion-button expand="block" type="submit" id="salvar" color="dark-green">Enviar</ion-button>
     </div>
   </form>
   <!-- Validation  -->
-  <ion-item *ngIf="form.controls.profession.invalid && (form.controls.profession.dirty || form.controls.profession.touched)" color="danger">
-    <div *ngIf="form.controls.profession.errors.required">Texto obrigatorio.</div>
+  <ion-item *ngIf="profession.invalid && (profession.dirty || profession.touched)" color="danger">
+    <div *ngIf="profession?.errors.required">
+      Texto é obrigatorio.
+    </div>
   </ion-item>
 </ion-content>

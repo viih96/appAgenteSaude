@@ -41,7 +41,7 @@ const routes: Routes = [
   },
   {
     path: 'updaet-user',
-    loadChildren: () => import('./updaet-user/updaet-user.module').then( m => m.UpdaetUserPageModule)
+    loadChildren: () => import('./update-user/update-user.module').then( m => m.UpdateUserPageModule)
   },
   {
     path: 'signup',
@@ -58,9 +58,11 @@ const routes: Routes = [
   {
     path: 'attendance-information/:id',
     loadChildren: () => import('./attendance-information/attendance-information.module').then( m => m.AttendanceInformationPageModule)
+  },
+  {
+    path: 'profession-list',
+    loadChildren: () => import('./profession-list/profession-list.module').then( m => m.ProfessionListPageModule)
   }
-
-
 
 ];
 
