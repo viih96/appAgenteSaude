@@ -1,5 +1,4 @@
-export class User {
-
+export class UpdateUser {
   email?: string;
   name?: string;
   cartaosus?: string;
@@ -9,5 +8,4 @@ export class User {
   tipousuario?: string = "agentesaude";
   filePath?: string = "";
   imgUrl?: string = "";
-
 }

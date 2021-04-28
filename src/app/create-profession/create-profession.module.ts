@@ -13,8 +13,7 @@ import { CreateProfessionPage } from './create-profession.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    CreateProfessionPageRoutingModule,
-    ReactiveFormsModule
+    CreateProfessionPageRoutingModule
   ],
   declarations: [CreateProfessionPage]
 })

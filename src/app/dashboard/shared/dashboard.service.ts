@@ -16,15 +16,6 @@ export class DashboardService {
    this.usersCollections = this.afs.collection<User>('users');
   }
 
-  //getAll(){
-   //return this.afs.collection('users').snapshotChanges().pipe(map(changes => {
-     //return changes.map( u => {
-     //  const id = u.payload.doc.id;
-     //  const data = u.payload.doc.data() as Dashboard
-     // return { id, ...data };
-   // })}))
- // }
-
   getById(id: string){
     return this.usersCollections.doc<User>(id).valueChanges();
  }

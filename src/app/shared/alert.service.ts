@@ -27,6 +27,25 @@ export class AlertService {
     await alert.present();
   }
 
+  async showConfirmarExclusãoProf(description: string, actionRemove: () => void){
+    const alert = await this.alertController.create({
+      header: 'Remover o item? ',
+      message: `Deseja remover o item: ${description}`,
+      buttons: [
+        {
+          text: 'Cancelar'
+        },
+        {
+          text: 'Remover',
+          handler: () => {
+            actionRemove();
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+
 
 
 }

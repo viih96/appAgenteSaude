@@ -50,7 +50,6 @@ export class UsersService {
       }
   }
 
- 
    getUsers(tipousuario: string){ // buscar todos
       // return this.afs.collection('symptoms', ref => ref.orderBy('name','asc'))
       // return this.afs.collection('users')
