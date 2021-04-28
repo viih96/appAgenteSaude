@@ -1,6 +1,6 @@
 <ion-header>
   <!-- Titulo da Pagina -->
-  <ion-toolbar color="medium">
+  <ion-toolbar color="dark-green">
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
@@ -13,14 +13,23 @@
 
  <ion-list>
 
-  <ion-item *ngFor="let attendance of attendanceList">
+  <ion-item>
     <ion-grid>
 
       <ion-row>
         <ion-col size="12">
           <ion-item>
+            <ion-label class="texto" position="stacked">Data</ion-label>
+            <ion-input disabled="true"><span>{{attend.date}}</span></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="12">
+          <ion-item>
             <ion-label class="texto" position="stacked">Paciente</ion-label>
-            <ion-input disabled="true">{{ attendance.paciente }}</ion-input>
+            <ion-input disabled="true"><span>{{attend.name}}</span></ion-input>
           </ion-item>
         </ion-col>
       </ion-row>
@@ -29,7 +38,7 @@
         <ion-col size="12">
           <ion-item>
             <ion-label class="texto" position="stacked">SUS</ion-label>
-            <ion-input disabled="true">{{ attendance.sus }}</ion-input>
+            <ion-input disabled="true"><span>{{attend.cartaosus}}</span></ion-input>
           </ion-item>
         </ion-col>
       </ion-row>
@@ -38,7 +47,7 @@
         <ion-col size="12">
           <ion-item>
             <ion-label class="texto" position="stacked">Idade</ion-label>
-            <ion-input disabled="true">{{ attendance.idade }}</ion-input>
+            <ion-input disabled="true"></ion-input>
           </ion-item>
         </ion-col>
       </ion-row>
@@ -47,7 +56,7 @@
         <ion-col size="12">
           <ion-item>
             <ion-label class="texto" position="stacked">Sexo</ion-label>
-            <ion-input disabled="true">{{ attendance.sexo }}</ion-input>
+              <p>{{ user.tiposanguineo }}</p>
           </ion-item>
         </ion-col>
       </ion-row>
@@ -56,28 +65,40 @@
         <ion-col size="12">
           <ion-item>
             <ion-label class="texto" position="stacked">Sangue</ion-label>
-            <ion-input disabled="true">{{ attendance.sangue }}</ion-input>
+            <ion-input disabled="true"></ion-input>
           </ion-item>
         </ion-col>
       </ion-row>
 
       <ion-row>
         <ion-col size="12">
-          <ion-item>
-            <ion-label class="texto" position="stacked">Sintoma</ion-label>
-            <ion-input disabled="true">{{ attendance.sintoma }}</ion-input>
+          <ion-label position="stacked">Dor</ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item *ngFor="let subAttend of subAttends">
+            <ion-label position="stacked">Local</ion-label>
+            <ion-input>{{ subAttend.pain }}</ion-input>
+            <ion-label position="stacked">Escala</ion-label>
+            <ion-input>{{ subAttend.scale }}</ion-input>
           </ion-item>
         </ion-col>
       </ion-row>
 
       <ion-row>
         <ion-col size="12">
-          <ion-item>
-            <ion-label class="texto" position="stacked">Dor</ion-label>
-            <ion-input disabled="true">{{ attendance.dor }}</ion-input>
+          <ion-label position="stacked">Sintoma</ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item *ngFor="let symptoms of symptom">
+            <ion-input>{{ symptoms.description }}</ion-input>
           </ion-item>
         </ion-col>
       </ion-row>
+
 
       <ion-row>
         <ion-col size="12">
