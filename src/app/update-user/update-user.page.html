@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>Editar</ion-title>
+    <ion-title>Editar Perfil do Agente de Saúde</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -18,7 +18,7 @@
 
     <ion-item [hidden]="!hasImg">
       <img src="{{user.imgUrl}}" alt="" class="img-thumbnail d-block" style="max-width: 100px;" [hidden]="!hasImg"/>
-      <ion-button color="danger"  (click)="removerImg(userId, filePath)" [hidden]="!hasImg">
+      <ion-button color="danger"  (click)="removerImg(userId, user.filePath)" [hidden]="!hasImg">
         <ion-icon name="trash"></ion-icon>
       </ion-button>
     </ion-item>
@@ -40,7 +40,7 @@
 
     <ion-item>
       <ion-label position="stacked">Registro</ion-label>
-      <ion-input name="registro" type="text"  [(ngModel)]="user.cartaosus"></ion-input>
+      <ion-input name="registro" type="text"  [(ngModel)]="user.registro"></ion-input>
     </ion-item>
 
     <ion-item>
@@ -60,8 +60,8 @@
 
     <div class="btn">
       <div class="botoes">
-        <ion-button class="botao" expand="block" color="dark-green" id="salvar" type="submit">Editar</ion-button>
-        <ion-button class="botao" expand="block" color="warning" [routerLink]="['/dashboard/']">Voltar</ion-button>
+        <ion-button class="botao" expand="block" color="dark-green" id="salvar" type="submit">Salvar</ion-button>
+        <ion-button class="botao" expand="block" color="warning" [routerLink]="['/dashboard']">Voltar</ion-button>
       </div>
     </div>
   </form>

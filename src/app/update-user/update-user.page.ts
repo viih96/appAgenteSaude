@@ -35,10 +35,10 @@ export class UpdateUserPage implements OnInit {
   research(){
     const subscribe = this.updateU.getById(this.userId).subscribe( (data: any) =>{
       subscribe.unsubscribe();
-      const { email, name, cartaosus, address_state, sexo, contato, tipousuario, filePath, imgUrl } = data;
+      const { email, name, registro, address_state, sexo, contato, tipousuario, filePath, imgUrl } = data;
       this.user.email = email;
       this.user.name = name;
-      this.user.cartaosus = cartaosus;
+      this.user.registro = registro;
       this.user.address_state = address_state;
       this.user.sexo = sexo;
       this.user.contato = contato;

@@ -29,6 +29,7 @@ export class SymptomsFormPage implements OnInit {
   ngOnInit() {
     this.symptoms = new Symptoms();
     this.symptoms.name = "";
+    this.symptoms.idname = "";
     this.symptoms.description = "";
 
     this.symptomsId = this.activatedRoute.snapshot.params['id'];
@@ -37,8 +38,9 @@ export class SymptomsFormPage implements OnInit {
     if(this.symptomsId){
        const subscribe = this.symptomsService.getById(this.symptomsId).subscribe( (data: any) =>{
         subscribe.unsubscribe();
-        const { name, description, imgUrl, filePath } = data;
+        const { name, idname, description, imgUrl, filePath } = data;
         this.symptoms.name = name;
+        this.symptoms.idname = idname;
         this.symptoms.description = description;
         this.filePath = filePath;
         this.imgUrl = imgUrl;

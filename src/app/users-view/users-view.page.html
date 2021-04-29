@@ -1,0 +1,101 @@
+<ion-header>
+  <ion-toolbar color="dark-green">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Visualizar Informações</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <form>
+
+    <ion-item>
+      <ion-label position="stacked">Nome completo</ion-label>
+      <ion-input name="name" disabled placeholder="" [(ngModel)]="username"></ion-input>
+      <!-- <spam>{{ user.name }}</spam> -->
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">E-mail</ion-label>
+      <ion-input name="email" type="email" disabled placeholder="" [(ngModel)]="useremail"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="tipousuario=='agentesaude'">
+      <ion-label position="stacked">Contato</ion-label>
+      <ion-input name="contato" type="text" disabled placeholder="" [(ngModel)]="usersAgentesaude.contato"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="tipousuario=='agentesaude'">
+      <ion-label position="stacked">Profissional</ion-label>
+      <ion-input name="professional" disabled placeholder="" [(ngModel)]="usersAgentesaude.professional"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="tipousuario=='agentesaude'">
+      <ion-label position="stacked">Registro</ion-label>
+      <ion-input name="registro" disabled placeholder="" [(ngModel)]="usersAgentesaude.registro"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="tipousuario=='agentesaude'">
+      <ion-label position="stacked">Estado</ion-label>
+      <ion-input name="address_state" type="text" disabled placeholder="" [(ngModel)]="usersAgentesaude.address_state">
+      </ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="tipousuario=='paciente'">
+      <ion-label position="stacked">Data de nascimento</ion-label>
+      <ion-input name="datanascimento" disabled placeholder="" [(ngModel)]="usersPaciente.datanascimento"></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="tipousuario=='paciente'">
+      <ion-label position="stacked">Tipo sanguíneo</ion-label>
+      <ion-input name="tiposanguineo" type="text" disabled placeholder="" [(ngModel)]="usersPaciente.tiposanguineo">
+      </ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="tipousuario=='paciente'">
+      <ion-label position="stacked">Contato</ion-label>
+      <ion-input name="contato" type="text" disabled placeholder="" [(ngModel)]="usersPaciente.celular"></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="tipousuario=='paciente'">
+      <ion-label position="stacked">CEP</ion-label>
+      <ion-input name="zipcode" type="text" disabled placeholder="" [(ngModel)]="usersPaciente.zipcode"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="tipousuario=='paciente'">
+      <ion-label position="stacked">Endereço</ion-label>
+      <ion-input name="address" type="text" disabled placeholder="" [(ngModel)]="usersPaciente.address"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="tipousuario=='paciente'">
+      <ion-label position="stacked">Numero</ion-label>
+      <ion-input name="address_number" type="number" disabled placeholder="" [(ngModel)]="usersPaciente.address_number">
+      </ion-input>
+    </ion-item>
+    <ion-item *ngIf="tipousuario=='paciente'">
+      <ion-label position="stacked">Bairro</ion-label>
+      <ion-input name="address_district" type="text" disabled placeholder=""
+        [(ngModel)]="usersPaciente.address_district"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="tipousuario=='paciente'">
+      <ion-label position="stacked">Cidade</ion-label>
+      <ion-input name="address_city" type="text" disabled placeholder="" [(ngModel)]="usersPaciente.address_city">
+      </ion-input>
+    </ion-item>
+    <ion-item *ngIf="tipousuario=='paciente'">
+      <ion-label position="stacked">Complemento</ion-label>
+      <ion-input name="address_complement" type="text" disabled placeholder=""
+        [(ngModel)]="usersPaciente.address_complement"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="tipousuario=='paciente'">
+      <ion-label position="stacked">Estado</ion-label>
+      <ion-input name="address_state" type="text" disabled placeholder="" [(ngModel)]="usersPaciente.address_state">
+      </ion-input>
+    </ion-item>
+    <ion-item *ngIf="tipousuario=='paciente'">
+      <ion-label position="stacked">Comorbidades</ion-label>
+      <ion-input name="comorbidades" type="text" disabled placeholder="" [(ngModel)]="usersPaciente.comorbidades">
+      </ion-input>
+    </ion-item>
+
+
+
+  </form>
+
+
+</ion-content>

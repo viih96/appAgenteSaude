@@ -1,41 +1,41 @@
-import { Profession } from './profession';
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { map } from 'rxjs/operators';
+import { Professional } from 'src/app/shared/professional';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProfessionService {
-  private professionCollection: AngularFirestoreCollection<Profession>;
+  private professionCollection: AngularFirestoreCollection<Professional>;
   constructor(private afs: AngularFirestore) {
-    this.professionCollection = this.afs.collection<Profession>('profession');
+    this.professionCollection = this.afs.collection<Professional>('professional');
    }
 
   // Metodo para adicionar a profissão
-  addProfession(profession: Profession){
+  addProfession(professional: Professional){
 
-    const { professsion } = profession;
+    const { description } = professional;
 
-    this.afs.collection('profession').doc().set(
+    this.afs.collection('professional').doc().set(
       {
-        description: professsion
+        description: description
       }
     );
  }
  getAll(){ // buscar todos
-  return this.afs.collection('profession')
+  return this.afs.collection('professional')
     .snapshotChanges().pipe(
       map( changes => {
         return changes.map( s => {
           const id = s.payload.doc.id;
-          const data = s.payload.doc.data() as Profession
+          const data = s.payload.doc.data() as Professional
           return { id, ...data };
         })
       })
     )
 }
 deleteProfession(id: string){
-  this.professionCollection.doc<Profession>(id).delete();
+  this.professionCollection.doc<Professional>(id).delete();
 }
 }

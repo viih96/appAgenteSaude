@@ -9,4 +9,5 @@ export class UsersAgentesaude {
   sexo?: string;
   contato?: string;
   tipousuario?: string = "agentesaude";
+  admin?: boolean = false;
 }

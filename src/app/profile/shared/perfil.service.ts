@@ -6,8 +6,8 @@ import { AngularFireStorage } from '@angular/fire/storage';
 @Injectable({
   providedIn: 'root'
 })
-export class DashboardService {
-  private usersCollections: AngularFirestoreCollection<User>;
+export class PerfilService {
+ private usersCollections: AngularFirestoreCollection<User>;
 
   constructor(
     private afs: AngularFirestore,

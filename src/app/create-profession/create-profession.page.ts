@@ -24,7 +24,7 @@ export class CreateProfessionPage implements OnInit {
       await this.Profession.addProfession(this.p);
       // mensagem OK
       this.toast.showMessageBottom('Profissão inserids com sucesso!!!','success')
-      this.router.navigate(['/dashboard']);
+      this.router.navigate(['/profession-list']);
     } catch (error) {
       // mensagem error
       this.toast.showMessageTop(error, 'danger');

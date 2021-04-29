@@ -1,6 +1,7 @@
 import { AuthGuard } from './shared/auth.guard';
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AdminGuard } from './shared/admin.guard';
 
 const routes: Routes = [
   {
@@ -16,7 +17,7 @@ const routes: Routes = [
   {
     path: 'symptoms-list',
     loadChildren: () => import('./symptoms/symptoms-list/symptoms-list.module').then( m => m.SymptomsListPageModule),
-    canActivate: [AuthGuard]
+    canActivate: [AdminGuard]
   },
   {
     path: 'symptoms-form/new',
@@ -37,10 +38,11 @@ const routes: Routes = [
   },
   {
     path: 'create-profession',
-    loadChildren: () => import('./create-profession/create-profession.module').then( m => m.CreateProfessionPageModule)
+    loadChildren: () => import('./create-profession/create-profession.module').then( m => m.CreateProfessionPageModule),
+    canActivate: [AdminGuard]
   },
   {
-    path: 'updaet-user',
+    path: 'update-user',
     loadChildren: () => import('./update-user/update-user.module').then( m => m.UpdateUserPageModule)
   },
   {
@@ -48,7 +50,7 @@ const routes: Routes = [
     loadChildren: () => import('./signup/signup.module').then( m => m.SignupPageModule)
   },
   {
-    path: 'medicament',
+    path: 'medicament/:id',
     loadChildren: () => import('./medicament/medicament.module').then( m => m.MedicamentPageModule)
   },
   {
@@ -62,7 +64,17 @@ const routes: Routes = [
   {
     path: 'profession-list',
     loadChildren: () => import('./profession-list/profession-list.module').then( m => m.ProfessionListPageModule)
+  },
+  {
+    path: 'users-view/:id',
+    loadChildren: () => import('./users-view/users-view.module').then( m => m.UsersViewPageModule)
+  },
+  {
+    path: 'profile',
+    loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
   }
+
+
 
 ];
 

@@ -14,6 +14,11 @@
         </ion-item>
 
         <ion-item class="ion-margin-top" lines="none">
+          <ion-label position="stacked">id do Sintoma</ion-label>
+          <ion-input name="idname" type="text" placeholder="mesmo nome do sintoma tudo junto e sem acentuação" [(ngModel)]="symptoms.idname"></ion-input>
+      </ion-item>
+
+      <ion-item class="ion-margin-top" lines="none">
             <ion-label position="stacked">Descrição</ion-label>
             <ion-input name="description" type="text" placeholder="Descrição do Sintoma" [(ngModel)]="symptoms.description"></ion-input>
         </ion-item>

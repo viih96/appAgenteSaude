@@ -1,0 +1,25 @@
+.topo-header-bg{
+  // height: 180px;
+  height: 11.25rem;
+  width: 100%;
+  background-color:  #0fff98;
+}
+.foto-header-bg{
+  margin-top: -85px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+img{
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  border: 7px solid #0fff98;
+}
+h1{
+  margin-top: 10px !important;
+}
+
+.text-color{
+ color: #2dd36f;
+}

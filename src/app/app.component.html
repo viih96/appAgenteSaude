@@ -3,7 +3,23 @@
     <ion-menu contentId="main-content" type="overlay">
       <ion-content>
         <ion-list id="inbox-list">
-          <ion-list-header>App Libras</ion-list-header>
+          <ion-list-header>
+            App Libras
+          </ion-list-header>
+          <div class="topo-header-bg">
+          </div>
+          <div *ngIf="user.imgUrl==''" class="foto-header-bg">
+            <img *ngIf="user.imgUrl==''" src="/assets/images/fotousuariopadrao.png" [routerLink]="['/profile']"/>
+          </div>
+
+          <div class="foto-header-bg" [hidden]="hasImg">
+            <img src="{{ user.imgUrl }}" alt="" [hidden]="hasImg" [routerLink]="['/profile']" />
+          </div>
+
+          <div class="ion-text-center" [routerLink]="['/profile']">
+            <h1>{{ user.name }}</h1>
+          </div>
+
           <!-- <ion-note>hi@ionicframework.com</ion-note> -->
 
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">

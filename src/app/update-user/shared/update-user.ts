@@ -1,7 +1,7 @@
 export class UpdateUser {
   email?: string;
   name?: string;
-  cartaosus?: string;
+  registro?: string;
   address_state?: string;
   sexo?: string;
   contato?: string;

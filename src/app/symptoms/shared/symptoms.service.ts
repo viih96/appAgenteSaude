@@ -44,11 +44,12 @@ export class SymptomsService {
     // 2 momento
     // criar id
      const id = this.afs.createId();
-     const { name, description } = symptoms;
+     const { name, idname, description } = symptoms;
 
     this.afs.collection('symptoms').doc(id).set(
       {
         name: name,
+        idname: idname,
         description: description,
       }
     );

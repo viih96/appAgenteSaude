@@ -6,6 +6,7 @@ import { ToastService } from '../shared/toast.service';
 import { Router } from '@angular/router';
 import { UsersAgentesaude } from '../users/shared/users-agentesaude';
 import { ValidaCpfService } from '../shared/valida-cpf.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-signup',
@@ -18,7 +19,9 @@ export class SignupPage implements OnInit {
   email: string;
   password: string;
   user: string;
-  professionals: any[] = [];
+  professional: any[] = [];
+  professionals: Observable<any[]>;
+
 
   professionalDescription: string;
 
@@ -32,15 +35,17 @@ export class SignupPage implements OnInit {
 
     ngOnInit() {
       this.usersAgentesaude = new UsersAgentesaude();
+      // this.professionals = this.professionalService.getAll();
       this.professionalService.getAll().subscribe( (data:any) => {
         this.professionals = data;
+        this.professional = data;
       });
     }
 
     setProfessional(professional:any){
       if(professional){
         // console.log(professional);
-        this.usersAgentesaude.professional = this.professionals.find(item => item.id === this.usersAgentesaude.id_professional).description
+        this.usersAgentesaude.professional = this.professional.find(item => item.id === this.usersAgentesaude.id_professional).description
       } else {
         this.usersAgentesaude.professional = "";
       }

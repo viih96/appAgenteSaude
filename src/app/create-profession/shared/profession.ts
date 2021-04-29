@@ -1,3 +1,3 @@
 export class Profession {
-  professsion: string = "";
+  description: string = "";
 }

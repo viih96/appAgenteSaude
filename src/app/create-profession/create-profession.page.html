@@ -3,23 +3,23 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>Cadastrar</ion-title>
+    <ion-title>Cadastrar Profissional Agente de Saúde</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <form (ngSubmit)="onSubmit()">
     <ion-item>
-      <ion-label position="floating">Profissao</ion-label>
-      <ion-input type="text" name="professsion" #profession="ngModel" [(ngModel)]="p.professsion" required></ion-input>
+      <ion-label position="floating">Profissional</ion-label>
+      <ion-input placeholder="Médico, Fisioterapeuta, Enfermeiro" type="text" name="description" #description="ngModel" [(ngModel)]="p.description" required></ion-input>
     </ion-item>
     <div class="form-button">
-      <ion-button expand="block" type="submit" id="salvar" color="dark-green">Enviar</ion-button>
+      <ion-button  expand="full" type="submit" id="salvar" color="dark-green">Enviar</ion-button>
     </div>
   </form>
   <!-- Validation  -->
-  <ion-item *ngIf="profession.invalid && (profession.dirty || profession.touched)" color="danger">
-    <div *ngIf="profession?.errors.required">
+  <ion-item *ngIf="description.invalid && (description.dirty || description.touched)" color="danger">
+    <div *ngIf="description?.errors.required">
       Texto é obrigatorio.
     </div>
   </ion-item>

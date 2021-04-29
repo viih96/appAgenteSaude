@@ -24,13 +24,13 @@ export class AttendancePage implements OnInit {
     this.getAllU();
   }
 
-  getAll(){
+  getAll() {
     this.attend = this.attendanceService.getAll();
-   }
+  }
 
-   getAllU(){
-     this.symptoms = this.attendanceService.getAllU();
-   }
+  getAllU() {
+    this.symptoms = this.attendanceService.getAllU();
+  }
 
 
 }

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { UsersAgentesaude } from './shared/users-agentesaude';
+import { UsersPaciente } from './shared/users-paciente';
 import { UsersService } from './shared/users.service';
 
 
@@ -9,20 +12,32 @@ import { UsersService } from './shared/users.service';
   styleUrls: ['./users.page.scss'],
 })
 export class UsersPage implements OnInit {
- 
+  tipousuario: string;
   users: Observable<any[]>;
+  usersPaciente: UsersPaciente;
+  usersAgentesaude: UsersAgentesaude;
+  usersId: string;
 
-  constructor(private usersService: UsersService) { }
+  constructor( private router: Router,
+    private usersService: UsersService, ) { }
 
   ngOnInit() {
-    this.getAllUsers();
+    this.usersPaciente = new UsersPaciente();
+    this.usersPaciente.name = "";
   }
 
-
-  getAllUsers(){  
-     this.users = this.usersService.getAllUsers('agentesaude');
-     
+   getAllUsersPaciente(){
+    this.users = this.usersService.getAllUsersPaciente('paciente');
    }
+
+   getAllUsersAgente(){
+    this.users = this.usersService.getAllUsersAgente('agentesaude');
+   }
+
+
+   onChange(){
+    console.log(this.tipousuario)
+  }
 
 
 }

@@ -34,12 +34,10 @@ export class MedicamentService {
 
   addMedicament(medicament: Medicament){
     const id = this.afs.createId();
-    const { paciente, atendimento, remedio, tipo, dosagem, horario, observacao } = medicament;
+    const {remedio, tipo, dosagem, horario, observacao } = medicament;
 
     this.afs.collection('medicament').doc(id).set(
       {
-        paciente: paciente,
-        sus: atendimento,
         remedio: remedio,
         tipo: tipo,
         dosagem: dosagem,
