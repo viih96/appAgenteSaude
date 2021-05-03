@@ -13,6 +13,7 @@ export class AttendanceService {
   private attendanceCollection: AngularFirestoreCollection<Attend>;
   private usersCollection: AngularFirestoreCollection<User>;
 
+
   constructor(
     private afs: AngularFirestore
   ) {
@@ -69,7 +70,7 @@ export class AttendanceService {
   }
 
   getAllSymptoms(id: string) {
-    return this.afs.collection('symptoms')
+    return this.afs.collection('attend').doc(id).collection('subSymptoms')
       .snapshotChanges().pipe(
         map(changes => {
           return changes.map(s => {

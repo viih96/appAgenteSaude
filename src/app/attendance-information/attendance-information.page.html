@@ -94,7 +94,7 @@
       <ion-row>
         <ion-col>
           <ion-item *ngFor="let symptoms of symptom">
-            <ion-input>{{ symptoms.description }}</ion-input>
+            <ion-input>{{ symptoms.name }}</ion-input>
           </ion-item>
         </ion-col>
       </ion-row>
@@ -102,7 +102,8 @@
 
       <ion-row>
         <ion-col size="12">
-          <ion-button expand="block" [routerLink]="['/medicament', attendId]" color="warning">Medicar</ion-button>
+          <ion-button expand="block" [routerLink]="['/medicament', attendId]" color="success">Medicar</ion-button>
+          <ion-button expand="block" [routerLink]="['/attendance']" color="warning">Voltar</ion-button>
         </ion-col>
       </ion-row>
 

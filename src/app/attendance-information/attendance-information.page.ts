@@ -78,7 +78,7 @@ export class AttendanceInformationPage implements OnInit {
   }
 
   getAllSymptoms() {
-    const subscribe = this.attendanceService.getAllSymptoms(this.symptomsId).subscribe((dataSym: any) => {
+    const subscribe = this.attendanceService.getAllSymptoms(this.attendId).subscribe((dataSym: any) => {
       subscribe.unsubscribe();
       console.log(dataSym);
       this.symptom = dataSym;

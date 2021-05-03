@@ -17,8 +17,6 @@ import { AttendanceService } from './../attendance/shared/attendance.service';
 export class MedicamentPage implements OnInit {
   attend: Attend;
   medicament: Medicament;
-  private medicamentId: string = '';
-  title: string;
   attendId: string;
   user: User;
   d = new Date(); // recuperando a data
@@ -69,54 +67,20 @@ export class MedicamentPage implements OnInit {
     this.medicament.horario = "";
     this.medicament.observacao = "";
 
-  //   this.medicamentId =  this.activatedRoute.snapshot.params['id'];
-  //   this.medicamentId ? this.title = "Editar Medicamento" : this.title = "Cadastrar Medicamento";
-
-  //   if(this.medicamentId){
-  //     const subscribe = this.medicamentService.getById(this.medicamentId).subscribe( (data: any) =>{
-  //      subscribe.unsubscribe();
-  //      const { paciente, atendimento, remedio, tipo, dosagem, horario, observacao } = data;
-  //      this.medicament.paciente = paciente;
-  //      this.medicament.atendimento = atendimento;
-  //      this.medicament.remedio = remedio;
-  //      this.medicament.tipo = tipo;
-  //      this.medicament.dosagem = dosagem;
-  //      this.medicament.horario = horario;
-  //      this.medicament.observacao = observacao;
-  //    })
-  //  }
   }
 
-  async onSubmit(){
-    // console.log(this.symptoms)
-
-    if (this.medicamentId){
-      // update
+  finishing(){
+      // passar o id e chamar metodo de gravar no banco
       try {
-        await this.medicamentService.updateMedicament(this.medicament, this.medicamentId);
-        // mensagem OK
-        this.toast.showMessageBottom('Medicamento alterado com sucesso!!!','success')
-        this.router.navigate(['/attendance']);
-      } catch (error) {
-        // mensagem error
-        this.toast.showMessageTop(error, 'danger');
-        console.log(error);
-      }
-
-    } else {
-      // add
-      try {
-        await this.medicamentService.addMedicament(this.medicament);
-        // mensagem OK
-        this.toast.showMessageBottom('Medicamento inserido com sucesso!!!','success')
-        this.router.navigate(['/attendance']);
-      } catch (error) {
-        // mensagem error
-        this.toast.showMessageTop(error, 'danger');
-        console.log(error);
-      }
-
+      this.medicamentService.addMedicament(this.attendId, this.medicament);
+      this.toast.showMessageBottom('Medicamento inserido com sucesso!!!','dark-green')
+      this.router.navigate(['/attendance']);
+    } catch (error) {
+      // mensagem error
+      this.toast.showMessageTop(error, 'danger');
+      console.log(error);
     }
   }
+
 
 }
