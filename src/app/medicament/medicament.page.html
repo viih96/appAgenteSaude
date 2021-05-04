@@ -17,13 +17,13 @@
       <ion-row>
         <!-- Paciente e SUS serão informções vindas do banco -->
         <!-- Linha 1 -->
-        <ion-col size="12">
+        <ion-col size="6">
           <ion-item>
             <ion-label position="stacked">Paciente</ion-label>
             <ion-input type="text" name="paciente" disabled="true">{{user.name}}</ion-input>
           </ion-item>
         </ion-col>
-        <ion-col size="12">
+        <ion-col size="6">
           <ion-item>
             <ion-label position="stacked">N° do Sus</ion-label>
             <ion-input type="text" name="paciente" disabled="true">{{user.cartaosus}}</ion-input>
@@ -36,17 +36,13 @@
       <!-- Linha 2 -->
 
       <ion-row>
-        <ion-col size="12">
+        <ion-col size="6">
           <ion-item>
             <ion-label position="floating">Remédio</ion-label>
             <ion-input type="text" name="remedio" [(ngModel)]="medicament.remedio"></ion-input>
           </ion-item>
         </ion-col>
-      </ion-row>
-
-      <!-- Linha 3 -->
-      <ion-row>
-        <ion-col size="12">
+        <ion-col size="6">
           <ion-item>
             <ion-label>Tipo</ion-label>
             <ion-select placeholder="Escolha" type="text" name="tipo" [(ngModel)]="medicament.tipo">
@@ -58,8 +54,9 @@
               <ion-select-option value="Pomada">Pomada</ion-select-option>
             </ion-select>
           </ion-item>
-        </ion-col>
+        </ion-col>        
       </ion-row>
+
 
       <!-- Linha 4 -->
       <ion-row>
@@ -90,8 +87,8 @@
       <!-- Botões de inserir e o botão de cancelar, que volta para a tela de atendimento -->
       <ion-row>
         <ion-col size="12">
-          <ion-button expand="block" type="submit" color="dark-green" (click)="finishing()">Salvar</ion-button>
-          <ion-button expand="block" type="submit" color="dark" (click)="updateStatus()">Finalizar</ion-button>
+          <ion-button expand="block" type="submit" color="dark-green" (click)="finishing()">Salvar e Continuar Atendimento</ion-button>
+          <ion-button expand="block" type="submit" color="dark" (click)="updateStatus()">Salvar e Finalizar Atendimento</ion-button>
           <ion-button expand="block" (click)="voltar()" color="warning">Voltar</ion-button>
         </ion-col>
       </ion-row>

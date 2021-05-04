@@ -12,14 +12,27 @@ export class MedicamentService {
   private attendanceCollection: AngularFirestoreCollection<Medicament>;
   private attendCollection: AngularFirestoreCollection<Attend>;
   private agenteCollection: AngularFirestoreCollection<UsersAgentesaude>;
-
+  dateclosed: string
 
   constructor(private afs: AngularFirestore, private storage: AngularFireStorage) {
     this.attendanceCollection = this.afs.collection<Medicament>('attend');
     this.agenteCollection = this.afs.collection<UsersAgentesaude>('users');
     this.attendCollection = this.afs.collection<Attend>('attend');
+    this.dateclosed = this.dateFormat();
 
+  }
 
+  dateFormat(){
+    var data = new Date(),
+        dia  = data.getDate().toString(),
+        diaF = (dia.length == 1) ? '0'+dia : dia,
+        mes  = (data.getMonth()+1).toString(), //+1 pois no getMonth Janeiro começa com zero.
+        mesF = (mes.length == 1) ? '0'+mes : mes,
+        anoF = data.getFullYear();
+
+    let datefinally = diaF+"/"+mesF+"/"+anoF;
+
+    return datefinally
   }
 
   getById(id: string) { // buscar por Id
@@ -31,7 +44,7 @@ export class MedicamentService {
   }
 
   updateStatus(attend: Attend, attId: string){
-    this.attendCollection.doc<Attend>(attId).update({status:"closed", date: attend.date});
+    this.attendCollection.doc<Attend>(attId).update({status:"closed", dateclosed: this.dateclosed });
   }
 
   getByAgId(aId: string) { // buscar por Id

@@ -1,14 +1,15 @@
-import { UsersAgentesaude } from './../users/shared/users-agentesaude';
-import { MedicamentService } from './../medicament/medicament.service';
 import { Component, OnInit } from '@angular/core';
 import { Attend } from '../attendance/shared/attend';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AngularFireAuth } from '@angular/fire/auth';
 import { User } from '../attendance/shared/user';
 import { Symptoms } from '../attendance/shared/symptoms';
 import { UsersService } from '../users/shared/users.service';
 import { AttendanceService } from './../attendance/shared/attendance.service';
 import { subAttend } from './../attendance/shared/subattend';
-import { AngularFireAuth } from '@angular/fire/auth';
+import { UsersAgentesaude } from './../users/shared/users-agentesaude';
+import { MedicamentService } from './../medicament/medicament.service';
+import { Medicament } from './../medicament/medicament';
 
 @Component({
   selector: 'app-attendance-information',
@@ -19,21 +20,24 @@ export class AttendanceInformationPage implements OnInit {
   attend: Attend;
   subAttend: subAttend;
   symptoms: Symptoms;
+  subMedicament: Medicament;
   user: User;
   attendId: string;
   userId: string;
   symptomsId: string;
+  medicamentId: string;
   d = new Date(); // recuperando a data
   yearNow = this.d.getFullYear(); // pegando o ano atual
   dnascimento: number; // variável para montar a idade
   subAttends: any[] = [];
+  subMedicaments: any[] = [];
   users: any[];
   symptom: any[] = [];
 
   constructor(private activatedRoute: ActivatedRoute,
     private userService: UsersService,
     private attendanceService: AttendanceService,
-
+    private medicamentService: MedicamentService,
     private router: Router) { }
 
   ngOnInit() {
@@ -45,10 +49,13 @@ export class AttendanceInformationPage implements OnInit {
     if (this.attendId) {
       const subscribe = this.attendanceService.getById(this.attendId).subscribe((data: any) => {
         subscribe.unsubscribe();
-        const { date, name, cartaosus, status, uId } = data;
+        const { date, name, cartaosus, status, uId, dateclosed } = data;
         this.attend.name = name;
         this.attend.date = date;
         this.attend.cartaosus = cartaosus;
+        this.attend.dateclosed = data.dateclosed == null ? "" : data.dateclosed;
+        this.attend.status = status;
+
         const subscribeu = this.userService.getByIdPaciente(uId).subscribe((dataU: any) => {
           subscribeu.unsubscribe();
           const { name, datanascimento, tiposanguineo, sexo, celular, faixaetaria, comorbidades, cartaosus } = dataU;
@@ -68,6 +75,7 @@ export class AttendanceInformationPage implements OnInit {
       })
       this.getAllSubAttend();
       this.getAllSymptoms();
+      this.getAllSubMedicament();
     }
 
   }
@@ -89,6 +97,16 @@ export class AttendanceInformationPage implements OnInit {
     })
 
   }
+
+  getAllSubMedicament() {
+    const subscribe = this.attendanceService.getAllSubMedicament(this.attendId).subscribe((dataMed: any) => {
+      subscribe.unsubscribe();
+      console.log(dataMed);
+      this.subMedicaments = dataMed;
+    })
+
+  }  
+  
 
   getByUid() {
     const subscribe = this.attendanceService.getByUid(this.userId).subscribe((data: any) => {

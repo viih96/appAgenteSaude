@@ -37,8 +37,7 @@ export class MedicamentPage implements OnInit {
               private afa: AngularFireAuth,
               private storage: AngularFireStorage,
               private router: Router,
-              private toast: ToastService,
-              private updateS: MedicamentService) { }
+              private toast: ToastService) { }
 
   ngOnInit() {
     this.agent = new UsersAgentesaude();
@@ -96,10 +95,10 @@ export class MedicamentPage implements OnInit {
 
   }
 
-  finishing(){
+  async finishing(){
       // passar o id e chamar metodo de gravar no banco
-      try {
-      this.medicamentService.addMedicament(this.attendId, this.medicament, this.agent);
+    try {
+      await this.medicamentService.addMedicament(this.attendId, this.medicament, this.agent);
       this.toast.showMessageBottom('Medicamento inserido com sucesso!!!','dark-green')
       this.router.navigate(['/attendance-information', this.attendId]);
     } catch (error) {
@@ -115,9 +114,18 @@ export class MedicamentPage implements OnInit {
   }
 
   async updateStatus(){
+    try {
+      await this.medicamentService.addMedicament(this.attendId, this.medicament, this.agent);
+      this.toast.showMessageBottom('Medicamento inserido com sucesso!!!','dark-green')
+      this.router.navigate(['/attendance-information', this.attendId]);
+    } catch (error) {
+      // mensagem error
+      this.toast.showMessageTop(error, 'danger');
+      console.log(error);
+    }
     // update
     try {
-      await this.updateS.updateStatus(this.attend, this.attendId);
+      await this.medicamentService.updateStatus(this.attend, this.attendId);
       // mensagem OK
       this.toast.showMessageBottom('Atendimento finalizado!!!','dark-green')
       this.router.navigate(['attendance/']);

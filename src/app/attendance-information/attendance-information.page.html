@@ -19,32 +19,38 @@
       <ion-row>
         <ion-col size="12">
           <ion-item>
-            <ion-label class="texto" position="stacked">Data</ion-label>
+            <ion-label class="texto" position="stacked">Data de abertura do atendimento</ion-label>
             <ion-input disabled="true"><span>{{attend.date}}</span></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label class="texto" position="stacked">Data de fechamento do atendimento</ion-label>
+            <ion-input disabled="true"><span>{{attend.dateclosed}}</span></ion-input>
           </ion-item>
         </ion-col>
       </ion-row>
 
       <ion-row>
-        <ion-col size="12">
+        <ion-col size="6">
           <ion-item>
             <ion-label class="texto" position="stacked">Paciente</ion-label>
             <ion-input disabled="true"><span>{{attend.name}}</span></ion-input>
           </ion-item>
         </ion-col>
-      </ion-row>
-
-      <ion-row>
-        <ion-col size="12">
+       <ion-col size="6">
           <ion-item>
             <ion-label class="texto" position="stacked">SUS</ion-label>
             <ion-input disabled="true"><span>{{attend.cartaosus}}</span></ion-input>
           </ion-item>
-        </ion-col>
+        </ion-col>        
       </ion-row>
-
       <ion-row>
-        <ion-col size="12">
+        <ion-col size="6">
+          <ion-item>
+            <ion-label class="texto" position="stacked">Faixa etaria</ion-label>
+            <p>{{ user.faixaetaria }}</p>
+          </ion-item>
+        </ion-col>
+        <ion-col size="6">
           <ion-item>
             <ion-label class="texto" position="stacked">Idade</ion-label>
             <p>{{ dnascimento }}</p>
@@ -53,26 +59,31 @@
       </ion-row>
 
       <ion-row>
-        <ion-col size="12">
+        <ion-col size="6">
           <ion-item>
             <ion-label class="texto" position="stacked">Sexo</ion-label>
               <p>{{ user.sexo }}</p>
           </ion-item>
         </ion-col>
-      </ion-row>
-
-      <ion-row>
-        <ion-col size="12">
+        <ion-col size="6">
           <ion-item>
             <ion-label class="texto" position="stacked">Sangue</ion-label>
             <p>{{ user.tiposanguineo }}</p>
+          </ion-item>
+        </ion-col>        
+      </ion-row>      
+      <ion-row>
+        <ion-col size="12">
+          <ion-item>
+            <ion-label class="texto" position="stacked">Comorbidades</ion-label>
+            <p>{{ user.comorbidades }}</p>
           </ion-item>
         </ion-col>
       </ion-row>
 
       <ion-row>
         <ion-col size="12">
-          <ion-label position="stacked">Dor</ion-label>
+          <h5 position="stacked">Dores</h5>
         </ion-col>
       </ion-row>
       <ion-row>
@@ -88,7 +99,7 @@
 
       <ion-row>
         <ion-col size="12">
-          <ion-label position="stacked">Sintoma</ion-label>
+          <h5 position="stacked">Sintomas</h5>
         </ion-col>
       </ion-row>
       <ion-row>
@@ -99,10 +110,33 @@
         </ion-col>
       </ion-row>
 
+      <ion-row>
+        <ion-col size="12">
+          <h5 position="stacked">Medicações</h5>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item *ngFor="let subMedicament of subMedicaments">
+            <ion-label position="stacked">Observação</ion-label>
+            <ion-input>{{ subMedicament.observacao }}</ion-input>
+            <ion-label position="stacked">Remédio</ion-label>
+            <ion-input>{{ subMedicament.remedio }}</ion-input>
+            <ion-label position="stacked">Tipo</ion-label>
+            <ion-input>{{ subMedicament.tipo }}</ion-input>          
+            <ion-label position="stacked">Dosagem</ion-label>
+            <ion-input>{{ subMedicament.dosagem }}</ion-input>          
+            <ion-label position="stacked">Horário</ion-label>
+            <ion-input>de: {{ subMedicament.horario }} em {{ subMedicament.horario }}hs</ion-input>          
+            <ion-label position="stacked">{{ subMedicament.professional }} / Registro {{ subMedicament.registro }}</ion-label>
+            <ion-input>{{ subMedicament.name }}</ion-input>          
+          </ion-item>
+        </ion-col>
+      </ion-row>
 
       <ion-row>
         <ion-col size="12">
-          <ion-button expand="block" [routerLink]="['/medicament', attendId]" color="success">Medicar</ion-button>
+          <ion-button *ngIf="attend.status=='opened'" expand="block" [routerLink]="['/medicament', attendId]" color="success">Medicar</ion-button>
           <ion-button expand="block" [routerLink]="['/attendance']" color="warning">Voltar</ion-button>
         </ion-col>
       </ion-row>
