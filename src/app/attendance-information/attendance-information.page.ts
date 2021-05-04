@@ -1,3 +1,5 @@
+import { UsersAgentesaude } from './../users/shared/users-agentesaude';
+import { MedicamentService } from './../medicament/medicament.service';
 import { Component, OnInit } from '@angular/core';
 import { Attend } from '../attendance/shared/attend';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -6,6 +8,7 @@ import { Symptoms } from '../attendance/shared/symptoms';
 import { UsersService } from '../users/shared/users.service';
 import { AttendanceService } from './../attendance/shared/attendance.service';
 import { subAttend } from './../attendance/shared/subattend';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-attendance-information',
@@ -30,6 +33,7 @@ export class AttendanceInformationPage implements OnInit {
   constructor(private activatedRoute: ActivatedRoute,
     private userService: UsersService,
     private attendanceService: AttendanceService,
+
     private router: Router) { }
 
   ngOnInit() {
@@ -96,7 +100,6 @@ export class AttendanceInformationPage implements OnInit {
       console.log(data);
       this.users = data;
     })
-
   }
 
 

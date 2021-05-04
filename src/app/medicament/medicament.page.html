@@ -13,6 +13,7 @@
   <form>
 
     <ion-grid>
+
       <ion-row>
         <!-- Paciente e SUS serão informções vindas do banco -->
         <!-- Linha 1 -->
@@ -90,7 +91,8 @@
       <ion-row>
         <ion-col size="12">
           <ion-button expand="block" type="submit" color="dark-green" (click)="finishing()">Salvar</ion-button>
-          <ion-button expand="block" [routerLink]="['/attendance']" color="warning">Voltar</ion-button>
+          <ion-button expand="block" type="submit" color="dark" (click)="updateStatus()">Finalizar</ion-button>
+          <ion-button expand="block" (click)="voltar()" color="warning">Voltar</ion-button>
         </ion-col>
       </ion-row>
     </ion-grid>

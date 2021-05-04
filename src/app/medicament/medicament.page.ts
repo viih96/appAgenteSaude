@@ -8,6 +8,8 @@ import { Attend } from '../attendance/shared/attend';
 import { User } from '../attendance/shared/user';
 import { UsersService } from '../users/shared/users.service';
 import { AttendanceService } from './../attendance/shared/attendance.service';
+import { UsersAgentesaude } from '../users/shared/users-agentesaude';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-medicament',
@@ -22,18 +24,43 @@ export class MedicamentPage implements OnInit {
   d = new Date(); // recuperando a data
   yearNow = this.d.getFullYear(); // pegando o ano atual
   dnascimento: number; // variável para montar a idade
+  agenteId: string;
+  medicName: string;
+  medicCrm: string;
+  medicProfissional: string;
+  agent: UsersAgentesaude;
 
   constructor(private activatedRoute: ActivatedRoute,
               private medicamentService: MedicamentService,
               private userService: UsersService,
               private attendanceService: AttendanceService,
+              private afa: AngularFireAuth,
               private storage: AngularFireStorage,
               private router: Router,
-              private toast: ToastService) { }
+              private toast: ToastService,
+              private updateS: MedicamentService) { }
 
   ngOnInit() {
+    this.agent = new UsersAgentesaude();
     this.attend = new Attend();
     this.user = new User();
+
+    this.afa.authState.subscribe(user =>{
+      this.agenteId = user.uid;
+      console.log(this.agenteId);
+
+      if(this.agenteId){
+        const subscribe = this.medicamentService.getByAgId(this.agenteId).subscribe( (data: any) =>{
+      subscribe.unsubscribe();
+      console.log(data);
+      //const { name, datanascimento, cartaosus, tiposanguineo, contato, email, comorbidades, filePath, imgUrl } = data;
+      this.agent.name = data.name == null ? "" : data.name;
+      this.agent.registro = data.registro == null ? "" : data.registro;
+      this.agent.professional = data.professional == null ? "" : data.professional;
+    });
+    }
+  })
+
     this.attendId = this.activatedRoute.snapshot.params['id'];
     if (this.attendId) {
       const subscribe = this.attendanceService.getById(this.attendId).subscribe((data: any) => {
@@ -72,14 +99,34 @@ export class MedicamentPage implements OnInit {
   finishing(){
       // passar o id e chamar metodo de gravar no banco
       try {
-      this.medicamentService.addMedicament(this.attendId, this.medicament);
+      this.medicamentService.addMedicament(this.attendId, this.medicament, this.agent);
       this.toast.showMessageBottom('Medicamento inserido com sucesso!!!','dark-green')
-      this.router.navigate(['/attendance']);
+      this.router.navigate(['/attendance-information', this.attendId]);
     } catch (error) {
       // mensagem error
       this.toast.showMessageTop(error, 'danger');
       console.log(error);
     }
+    this.attend.status = "closed";
+  }
+
+  voltar(){
+    this.router.navigate(['/attendance-information', this.attendId]);
+  }
+
+  async updateStatus(){
+    // update
+    try {
+      await this.updateS.updateStatus(this.attend, this.attendId);
+      // mensagem OK
+      this.toast.showMessageBottom('Atendimento finalizado!!!','dark-green')
+      this.router.navigate(['attendance/']);
+    } catch (error) {
+      // mensagem error
+      this.toast.showMessageTop(error, 'danger');
+      console.log(error);
+    }
+
   }
 
 
