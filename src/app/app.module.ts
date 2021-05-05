@@ -14,7 +14,7 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { HttpClientModule } from '@angular/common/http';
 
 
-import { environment } from 'src/environments/environment';
+import { environment } from './../environments/environment';
 import { DatePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
