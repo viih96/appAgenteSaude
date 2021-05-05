@@ -4,4 +4,5 @@ export class Attend {
   cartaosus?: string;
   date?: string;
   uId?: string;
+  dateclosed?: string;
 }

@@ -1,3 +1,5 @@
+import { UsersAgentesaude } from './../../users/shared/users-agentesaude';
+import { Medicament } from './../../medicament/medicament';
 import { User } from './user';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Injectable } from '@angular/core';
@@ -13,11 +15,14 @@ export class AttendanceService {
   private attendanceCollection: AngularFirestoreCollection<Attend>;
   private usersCollection: AngularFirestoreCollection<User>;
 
+
+
   constructor(
     private afs: AngularFirestore
   ) {
     this.attendanceCollection = this.afs.collection<Attend>('attend');
     this.usersCollection = this.afs.collection<User>('users');
+
   }
 
   getAll() {
@@ -51,6 +56,7 @@ export class AttendanceService {
     return this.attendanceCollection.doc<Attend>(id).valueChanges();
   }
 
+
   getByUid(id: string) { // buscar por Id
     return this.usersCollection.doc<User>(id).valueChanges();
   }
@@ -68,8 +74,21 @@ export class AttendanceService {
       )
   }
 
+  getAllSubMedicament(id: string) {
+    return this.afs.collection('attend').doc(id).collection('subMedicament')
+      .snapshotChanges().pipe(
+        map(changes => {
+          return changes.map(s => {
+            const id = s.payload.doc.id;
+            const data = s.payload.doc.data() as Medicament
+            return { id, ...data };
+          })
+        })
+      )
+  }
+
   getAllSymptoms(id: string) {
-    return this.afs.collection('symptoms')
+    return this.afs.collection('attend').doc(id).collection('subSymptoms')
       .snapshotChanges().pipe(
         map(changes => {
           return changes.map(s => {

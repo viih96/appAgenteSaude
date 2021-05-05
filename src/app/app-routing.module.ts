@@ -21,11 +21,13 @@ const routes: Routes = [
   },
   {
     path: 'symptoms-form/new',
-    loadChildren: () => import('./symptoms/symptoms-form/symptoms-form.module').then( m => m.SymptomsFormPageModule)
+    loadChildren: () => import('./symptoms/symptoms-form/symptoms-form.module').then( m => m.SymptomsFormPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'symptoms-form/edit/:id',
-    loadChildren: () => import('./symptoms/symptoms-form/symptoms-form.module').then( m => m.SymptomsFormPageModule)
+    loadChildren: () => import('./symptoms/symptoms-form/symptoms-form.module').then( m => m.SymptomsFormPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'dashboard',
@@ -43,7 +45,8 @@ const routes: Routes = [
   },
   {
     path: 'update-user',
-    loadChildren: () => import('./update-user/update-user.module').then( m => m.UpdateUserPageModule)
+    loadChildren: () => import('./update-user/update-user.module').then( m => m.UpdateUserPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'signup',
@@ -51,7 +54,8 @@ const routes: Routes = [
   },
   {
     path: 'medicament/:id',
-    loadChildren: () => import('./medicament/medicament.module').then( m => m.MedicamentPageModule)
+    loadChildren: () => import('./medicament/medicament.module').then( m => m.MedicamentPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'attendance',
@@ -63,15 +67,18 @@ const routes: Routes = [
   },
   {
     path: 'profession-list',
-    loadChildren: () => import('./profession-list/profession-list.module').then( m => m.ProfessionListPageModule)
+    loadChildren: () => import('./profession-list/profession-list.module').then( m => m.ProfessionListPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'users-view/:id',
-    loadChildren: () => import('./users-view/users-view.module').then( m => m.UsersViewPageModule)
+    loadChildren: () => import('./users-view/users-view.module').then( m => m.UsersViewPageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'profile',
-    loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
+    loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule),
+    canActivate: [AuthGuard]
   }
 
 

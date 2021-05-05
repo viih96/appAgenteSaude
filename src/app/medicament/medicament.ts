@@ -4,4 +4,7 @@ export class Medicament {
   dosagem: string =""; //em ml
   horario: string=""; //a cada x horas
   observacao: string="";
+  name: string ="";
+  registro: string ="";
+  professional: string ="";
 }

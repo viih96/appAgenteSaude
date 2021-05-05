@@ -1,57 +1,71 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { AngularFireStorage } from '@angular/fire/storage';
+import { Attend } from '../attendance/shared/attend';
+import { UsersAgentesaude } from '../users/shared/users-agentesaude';
 import { Medicament } from './medicament';
-import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MedicamentService {
-  private medicamentCollection: AngularFirestoreCollection<Medicament>;
+  private attendanceCollection: AngularFirestoreCollection<Medicament>;
+  private attendCollection: AngularFirestoreCollection<Attend>;
+  private agenteCollection: AngularFirestoreCollection<UsersAgentesaude>;
+  dateclosed: string
 
   constructor(private afs: AngularFirestore, private storage: AngularFireStorage) {
-    this.medicamentCollection = this.afs.collection<Medicament>('medicament')
+    this.attendanceCollection = this.afs.collection<Medicament>('attend');
+    this.agenteCollection = this.afs.collection<UsersAgentesaude>('users');
+    this.attendCollection = this.afs.collection<Attend>('attend');
+    this.dateclosed = this.dateFormat();
+
   }
 
-  getAll(){ // buscar todos
-    // return this.afs.collection('medicament', ref => ref.orderBy('name','asc'))
-    return this.afs.collection('medicament')
-      .snapshotChanges().pipe(
-        map( changes => {
-          return changes.map( s => {
-            const id = s.payload.doc.id;
-            const data = s.payload.doc.data() as Medicament
-            return { id, ...data };
-          })
-        })
-      )
- }
+  dateFormat(){
+    var data = new Date(),
+        dia  = data.getDate().toString(),
+        diaF = (dia.length == 1) ? '0'+dia : dia,
+        mes  = (data.getMonth()+1).toString(), //+1 pois no getMonth Janeiro começa com zero.
+        mesF = (mes.length == 1) ? '0'+mes : mes,
+        anoF = data.getFullYear();
 
- getById(id: string){ // buscar por Id
-  return this.medicamentCollection.doc<Medicament>(id).valueChanges();
-}
+    let datefinally = diaF+"/"+mesF+"/"+anoF;
 
-  addMedicament(medicament: Medicament){
-    const id = this.afs.createId();
-    const {remedio, tipo, dosagem, horario, observacao } = medicament;
+    return datefinally
+  }
 
-    this.afs.collection('medicament').doc(id).set(
+  getById(id: string) { // buscar por Id
+    return this.attendanceCollection.doc<Medicament>(id).valueChanges();
+  }
+
+  getByIdAttend(attId: string) { // buscar por Id
+    return this.attendCollection.doc<Attend>(attId).valueChanges();
+  }
+
+  updateStatus(attend: Attend, attId: string){
+    this.attendCollection.doc<Attend>(attId).update({status:"closed", dateclosed: this.dateclosed });
+  }
+
+  getByAgId(aId: string) { // buscar por Id
+    return this.agenteCollection.doc<UsersAgentesaude>(aId).valueChanges();
+  }
+
+  addMedicament(id: string, medicament: Medicament, agent: UsersAgentesaude){
+    const {remedio, tipo, dosagem, horario, observacao, } = medicament;
+    const {name, registro, professional} = agent;
+    this.attendanceCollection.doc<Medicament>(id).collection('subMedicament').add(
       {
-        remedio: remedio,
-        tipo: tipo,
-        dosagem: dosagem,
-        horario: horario,
-        observacao: observacao,
+        remedio,
+        tipo,
+        dosagem,
+        horario,
+        observacao,
+        name,
+        registro,
+        professional
       }
-    );
+    )
   }
 
-  updateMedicament(medicament: Medicament, id: string){
-    this.medicamentCollection.doc<Medicament>(id).update(Object.assign({}, medicament));
- }
-
-  deleteSymptoms(id: string, filePath: string){
-    this.medicamentCollection.doc<Medicament>(id).delete();
-  }
 }

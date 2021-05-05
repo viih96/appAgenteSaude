@@ -26,26 +26,42 @@
       <ion-item>
         <ion-grid>
           <ion-row>
-            <ion-col size="4">
-              <!-- <span>{{attendance.id }}</span> -->
-              <span>{{attendance.name }}</span>
+            <ion-col size="6">
+              <ion-item>
+                <ion-label class="texto" position="fixed">Nome</ion-label>
+                <ion-input disabled="true" class="input"><span>{{attendance.name}}</span></ion-input>
+              </ion-item>
             </ion-col>
-            <ion-col size="5">
-              <span>{{attendance.cartaosus }}</span>
-            </ion-col>
-            <ion-col size="3">
-              <ion-button [routerLink]="['/attendance-information', attendance.id]">
-                <ion-icon name="add"></ion-icon>
-              </ion-button>
+            <ion-col size="6">
+              <ion-item>
+                <ion-label class="texto" position="fixed">Sus</ion-label>
+                <ion-input disabled="true" class="input"><span>{{attendance.cartaosus}}</span></ion-input>
+              </ion-item>
             </ion-col>
           </ion-row>
           <ion-row>
-            <ion-col size="4">
-              <span>{{attendance.date }}</span>
+            <ion-col size="12">
+              <ion-item>
+                <ion-label position="stacked">Data Abertura</ion-label>
+                <ion-input disabled="true" class="input"><span>{{attendance.date}}</span></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position="stacked">Data Encerramento</ion-label>
+                <ion-input disabled="true" class="input"><span>{{attendance.dateclosed}}</span></ion-input>
+              </ion-item>
             </ion-col>
-            <ion-col size="5">
-              <span class="textcolorwarning" *ngIf="attendance.status=='opened'">Atendimento em Aberto</span>
-              <span class="textcolorgreen" *ngIf="attendance.status=='closed'">Atendimento Realizado</span>
+            <ion-col size="12">
+              <ion-item>
+                <ion-label class="texto" position="fixed">Status</ion-label>
+                <ion-input disabled="true" class="input">
+                  <span class="textcolorwarning" *ngIf="attendance.status=='opened'">Atendimento em Aberto</span>
+                  <span class="textcolorgreen" *ngIf="attendance.status=='closed'">Atendimento Realizado</span>
+                </ion-input>
+                <ion-button class="botao" [routerLink]="['/attendance-information', attendance.id]">
+                  <ion-icon *ngIf="attendance.status=='opened'" name="add"></ion-icon>
+                  <ion-icon *ngIf="attendance.status=='closed'" name="search-circle-outline"></ion-icon>
+                </ion-button>
+              </ion-item>
             </ion-col>
           </ion-row>
          </ion-grid>
@@ -57,4 +73,3 @@
 </ion-grid>
 
 </ion-content>
-

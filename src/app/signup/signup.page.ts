@@ -15,17 +15,17 @@ import { Observable } from 'rxjs';
 })
 export class SignupPage implements OnInit {
   usersAgentesaude: UsersAgentesaude;
-  tipousuario: string="agentesaude";
+  tipousuario: string = "agentesaude";
   email: string;
   password: string;
   user: string;
-  professional: any[] = [];
-  professionals: Observable<any[]>;
+  professionals: any[] = [];
+  // professionals: Observable<any[]>;
 
 
   professionalDescription: string;
 
-  constructor(private auth:AuthService,
+  constructor(private auth: AuthService,
     private professionalService: ProfessionalService,
     private afa: AngularFireAuth,
     // private cepService: CepService,
@@ -33,32 +33,32 @@ export class SignupPage implements OnInit {
     private toast: ToastService,
     private router: Router) { }
 
-    ngOnInit() {
-      this.usersAgentesaude = new UsersAgentesaude();
-      // this.professionals = this.professionalService.getAll();
-      this.professionalService.getAll().subscribe( (data:any) => {
-        this.professionals = data;
-        this.professional = data;
-      });
-    }
-
-    setProfessional(professional:any){
-      if(professional){
-        // console.log(professional);
-        this.usersAgentesaude.professional = this.professional.find(item => item.id === this.usersAgentesaude.id_professional).description
-      } else {
-        this.usersAgentesaude.professional = "";
-      }
+  ngOnInit() {
+    this.usersAgentesaude = new UsersAgentesaude();
+    // this.professionals = this.professionalService.getAll();
+    this.professionalService.getAll().subscribe((data: any) => {
+      this.professionals = data;
+      // this.professional = data;
+    });
   }
 
-  getProfessional(id: string){
-    const subscribe = this.professionalService.getProfessional(id).subscribe( (data: any) =>{
+  setProfessional(professional: any) {
+    if (professional) {
+      // console.log(professional);
+      this.usersAgentesaude.professional = this.professionals.find(item => item.id === this.usersAgentesaude.id_professional).description
+    } else {
+      this.usersAgentesaude.professional = "";
+    }
+  }
+
+  getProfessional(id: string) {
+    const subscribe = this.professionalService.getProfessional(id).subscribe((data: any) => {
       subscribe.unsubscribe();
       this.usersAgentesaude.professional = data.description;
     })
   }
 
-  async registerAgentesaude(){
+  async registerAgentesaude() {
     this.usersAgentesaude.email = this.email;
     this.usersAgentesaude.password = this.password;
     this.usersAgentesaude.tipousuario = this.tipousuario;
@@ -70,13 +70,13 @@ export class SignupPage implements OnInit {
       this.toast.showMessageBottom('Usuário registrado com sucesso !!!', 'secondary');
       this.router.navigate(['login']);
     } catch (error) {
-      this.toast.showMessageTop(error,'danger');
+      this.toast.showMessageTop(error, 'danger');
     }
   }
 
-  validaCPF(){
+  validaCPF() {
     if (this.validaCPFService.isValidCPF(this.password) == false) {
-      this.toast.showMessageTop('CPF Inválido','danger');
+      this.toast.showMessageTop('CPF Inválido', 'danger');
     }
   }
 
