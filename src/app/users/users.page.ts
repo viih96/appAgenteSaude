@@ -23,7 +23,8 @@ export class UsersPage implements OnInit {
 
   ngOnInit() {
     this.usersPaciente = new UsersPaciente();
-    this.usersPaciente.name = "";
+    // this.usersPaciente.name = "";
+    this.usersAgentesaude = new UsersAgentesaude();
   }
 
    getAllUsersPaciente(){

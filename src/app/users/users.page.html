@@ -46,8 +46,10 @@
                       <span>{{ user.name}}</span>
                   </ion-col>
                   <ion-col size="2">
-                      <p>Cartão Sus</p>
-                      <span>{{ user.cartaosus}}</span>
+                      <p *ngIf="user.tipousuario=='paciente'">Cartão Sus</p>
+                      <span *ngIf="user.tipousuario=='paciente'">{{ user.cartaosus}}</span>
+                      <p *ngIf="user.tipousuario=='agentesaude'">{{ user.professional}}</p>
+                      <span *ngIf="user.tipousuario=='agentesaude'">{{ user.registro}}</span>
                   </ion-col>
                   <ion-col size="3">
                       <p>Email</p>

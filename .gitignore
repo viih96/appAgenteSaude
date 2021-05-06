@@ -31,4 +31,6 @@ android
 /plugins
 /www
 /src/firebaseConfig.ts
+/src/firebaseConfig.prod.ts
 /public
+.firebase
