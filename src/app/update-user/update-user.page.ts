@@ -77,7 +77,7 @@ export class UpdateUserPage implements OnInit {
       await this.updateU.updateUser(this.user, this.userId, this.file);
       // mensagem OK
       this.toast.showMessageBottom('Usuario alterado com sucesso!!!','dark-green')
-      this.router.navigate(['dashboard/']);
+      this.router.navigate(['/profile']);
     } catch (error) {
       // mensagem error
       this.toast.showMessageTop(error, 'danger');
