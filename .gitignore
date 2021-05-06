@@ -31,3 +31,4 @@ android
 /plugins
 /www
 /src/firebaseConfig.ts
+/public

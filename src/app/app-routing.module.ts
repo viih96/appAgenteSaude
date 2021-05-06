@@ -59,7 +59,8 @@ const routes: Routes = [
   },
   {
     path: 'attendance',
-    loadChildren: () => import('./attendance/attendance.module').then( m => m.AttendancePageModule)
+    loadChildren: () => import('./attendance/attendance.module').then( m => m.AttendancePageModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'attendance-information/:id',

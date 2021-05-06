@@ -1,8 +1,8 @@
 {
-  "name": "appWeb",
-  "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "https://ionicframework.com/",
+  "name": "AppLibras",
+  "version": "1.0.0",
+  "author": "Técnico de informática 1/19 Senac Campinas (Augusto, Ivan, Viniciu, Tatiana e Vinicius)",
+  "homepage": "https://applibrasenfermagem.firebaseapp.com",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
