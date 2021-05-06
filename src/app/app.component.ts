@@ -18,7 +18,7 @@ export class AppComponent {
     // { title: 'Archived', url: '/folder/Archived', icon: 'archive' },
     { title: 'Atendimentos', url: 'attendance', icon: 'chatbubbles' },
     { title: 'Profissionais', url: 'profession-list', icon: 'heart' },
-    { title: 'Perfil do Usuario', url: 'update-user', icon: 'person' },
+    { title: 'Perfil do Usuario', url: 'profile', icon: 'person' },
 
     // { title: 'Trash', url: '/folder/Trash', icon: 'trash' },
     // { title: 'Spam', url: '/folder/Spam', icon: 'warning' },
